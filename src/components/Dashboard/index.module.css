@@ -1,0 +1,7 @@
+.dashboard {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 250px 1fr;
+      grid-template-columns: 250px 1fr;
+}
+/*# sourceMappingURL=index.module.css.map */
