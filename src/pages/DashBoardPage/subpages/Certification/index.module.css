@@ -1,0 +1,46 @@
+.certification .inner {
+  margin: 0 auto;
+  padding-top: 50px;
+  max-width: 400px;
+}
+
+.certification .inner h1 {
+  font-size: 24px;
+  letter-spacing: 2px;
+  color: rgba(0, 0, 0, 0.65);
+  text-align: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  line-height: 1em;
+  position: relative;
+}
+
+.certification .inner h1::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  height: 7px;
+  z-index: -1;
+  background-color: #597ab6;
+}
+
+.certification .inner svg {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.certification .inner p {
+  color: rgba(0, 0, 0, 0.55);
+  margin-bottom: 20px;
+}
+
+.certification .inner p span {
+  font-weight: 700;
+}
+/*# sourceMappingURL=index.module.css.map */

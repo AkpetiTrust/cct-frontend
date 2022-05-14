@@ -1,0 +1,14 @@
+.results {
+  padding: 30px;
+}
+
+.results .list {
+  margin-top: 40px;
+}
+
+.results .list .title {
+  font-size: 17px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.71);
+}
+/*# sourceMappingURL=index.module.css.map */
