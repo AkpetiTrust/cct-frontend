@@ -1,0 +1,143 @@
+.login {
+  background-color: #fefcfb;
+  padding: 40px;
+  padding-top: 80px;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.login .image_container {
+  width: 70px;
+  margin: 0 auto;
+  margin-bottom: 35px;
+}
+
+.login .image_container img {
+  max-width: 100%;
+}
+
+.login form {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 100px;
+  background-color: #fff;
+  border-radius: 7px;
+  padding: 50px;
+  padding-top: 20px;
+  padding-bottom: 70px;
+  -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.login form .heading {
+  text-align: center;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.09em;
+  margin-bottom: 20px;
+}
+
+.login form .form_group {
+  margin-bottom: 30px;
+}
+
+.login form .form_group label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.login form button {
+  margin-top: 10px;
+}
+
+.login form button:hover svg {
+  -webkit-transform: translateX(10px);
+          transform: translateX(10px);
+}
+
+.login form button svg {
+  width: 30px;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.login footer {
+  text-align: center;
+  letter-spacing: 0.09em;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.login .shapes > * {
+  position: absolute;
+  z-index: -1;
+}
+
+.login .shapes .circle {
+  --size: 150px;
+  width: var(--size);
+  height: var(--size);
+  top: -40px;
+  left: -30px;
+  background-color: #f1f4f9;
+  border-radius: 50%;
+}
+
+.login .shapes .lemon {
+  --size: 250px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 150px 0px;
+  background-color: #fbf5f4;
+  bottom: 40px;
+  right: 20px;
+}
+
+.login .shapes .top_right {
+  top: -20px;
+  right: 0;
+  width: 130px;
+}
+
+.login .shapes .bottom_left {
+  bottom: 40px;
+  left: 20px;
+  width: 160px;
+}
+
+@media screen and (max-width: 750px) {
+  .login .shapes {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .login {
+    padding-top: 40px;
+  }
+  .login form {
+    padding: 25px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+  }
+  .login form .heading {
+    text-align: left;
+    font-size: 14px;
+  }
+  .login form label {
+    font-size: 14px;
+  }
+  .login form button {
+    font-size: 12px;
+  }
+  .login footer {
+    font-size: 14px;
+  }
+}
+/*# sourceMappingURL=index.module.css.map */

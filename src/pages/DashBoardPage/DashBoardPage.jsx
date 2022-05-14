@@ -15,7 +15,7 @@ function DashBoardPage() {
     },
   };
 
-  const dashboardPage = dashboardPages[owner][component] || <div></div>;
+  const dashboardPage = dashboardPages[owner]?.[component] || <div></div>;
 
   return <Dashboard owner={owner}>{dashboardPage}</Dashboard>;
 }

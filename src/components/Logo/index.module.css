@@ -1,4 +1,5 @@
 .logo {
+  all: unset;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7,10 +8,7 @@
       -ms-flex-align: center;
           align-items: center;
   padding-left: 25px;
-}
-
-.logo a {
-  all: unset;
+  cursor: pointer;
 }
 
 .logo img {

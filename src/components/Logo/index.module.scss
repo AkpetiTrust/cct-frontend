@@ -1,12 +1,10 @@
 .logo {
+  all: unset;
   display: flex;
   gap: 8px;
   align-items: center;
   padding-left: 25px;
-
-  a {
-    all: unset;
-  }
+  cursor: pointer;
 
   img {
     width: 50px;
