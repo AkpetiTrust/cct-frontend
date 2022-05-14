@@ -9,6 +9,10 @@
   padding-left: 25px;
 }
 
+.logo a {
+  all: unset;
+}
+
 .logo img {
   width: 50px;
 }

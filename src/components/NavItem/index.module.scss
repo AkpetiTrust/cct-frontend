@@ -17,6 +17,12 @@
     display: flex;
     align-items: center;
     gap: 7px;
+    transform: translateX(0);
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: translateX(15px);
+    }
   }
 
   svg {

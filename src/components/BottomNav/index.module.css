@@ -1,0 +1,15 @@
+.bottom {
+  position: absolute;
+  left: 25px;
+  bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.bottom svg {
+  width: 20px;
+}
+/*# sourceMappingURL=index.module.css.map */

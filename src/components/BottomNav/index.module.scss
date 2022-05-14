@@ -1,0 +1,12 @@
+.bottom {
+  position: absolute;
+  left: 25px;
+  bottom: 30px;
+  display: flex;
+  list-style: none;
+  gap: 20px;
+
+  svg {
+    width: 20px;
+  }
+}
