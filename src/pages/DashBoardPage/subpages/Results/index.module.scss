@@ -1,5 +1,10 @@
 .results {
-  padding: 30px;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+
+  & > div {
+    padding: 30px;
+  }
 
   .list {
     margin-top: 40px;
@@ -8,6 +13,30 @@
       font-size: 17px;
       font-weight: 700;
       color: rgba($color: #000000, $alpha: 0.71);
+    }
+
+    ul {
+      margin-top: 5px;
+
+      li {
+        margin-bottom: 4px;
+        a {
+          color: #243451;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+    background-image: url(../../../../assets/results_bg.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    svg {
+      width: 300px;
     }
   }
 }

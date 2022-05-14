@@ -1,0 +1,66 @@
+.feedback {
+  padding: 50px;
+  padding-top: 70px;
+  position: relative;
+  overflow: hidden;
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 60px;
+
+    .image_container {
+      svg {
+        max-width: 380px;
+      }
+    }
+
+    form {
+      max-width: 350px;
+
+      .form_group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      textarea {
+        all: unset;
+        box-sizing: border-box;
+        cursor: text;
+        width: 100%;
+        background-color: #e8e8e8;
+        border-radius: 5px;
+        padding: 5px 8px;
+        font-size: 14px;
+        min-height: 100px;
+        resize: vertical;
+      }
+    }
+  }
+
+  .circle {
+    position: absolute;
+    --size: 120px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    top: -50px;
+    left: -30px;
+    background-color: rgba(255, 242, 204, 0.4);
+  }
+
+  .square {
+    position: absolute;
+    --size: 170px;
+    width: var(--size);
+    height: var(--size);
+    bottom: -50px;
+    right: -30px;
+    transform: rotate(29deg);
+    background: rgba(238, 136, 94, 0.08);
+  }
+}

@@ -9,7 +9,7 @@ function SectionTitle({ title, children, isNotSpaced, isNotDecorated, width }) {
   return (
     <div className={className}>
       <h1>{title}</h1>
-      <p style={{ width }}>{children}</p>
+      <p style={{ maxWidth: width }}>{children}</p>
     </div>
   );
 }

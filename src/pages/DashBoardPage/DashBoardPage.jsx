@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Dashboard } from "../../components";
-import { Certification, Results } from "./subpages";
+import { Certification, Results, Feedback } from "./subpages";
 import { useParams } from "react-router-dom";
 
 function DashBoardPage() {
@@ -11,6 +11,7 @@ function DashBoardPage() {
     student: {
       certification: <Certification />,
       results: <Results />,
+      feedback: <Feedback />,
     },
   };
 
