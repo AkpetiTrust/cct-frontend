@@ -1,0 +1,21 @@
+.title {
+  h1 {
+    margin-bottom: 8px;
+    line-height: 1em;
+    font-size: 24px;
+    color: rgba($color: #000000, $alpha: 0.75);
+  }
+
+  &:not(.no_space) h1 {
+    letter-spacing: 2px;
+  }
+
+  &:not(.no_decoration) {
+    padding-left: 10px;
+    border-left: 4px solid #718ec1;
+  }
+
+  p {
+    color: #6b6b6b;
+  }
+}

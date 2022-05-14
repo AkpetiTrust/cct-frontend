@@ -1,23 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import { Button, Input, Ul, SectionTitle } from "./components";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SectionTitle title={"CCNA"}>
+        A CISCO course.It has also evolved to include a command-line interface
+        capability and can be used in standalone graphical applications
+      </SectionTitle>
     </div>
   );
 }

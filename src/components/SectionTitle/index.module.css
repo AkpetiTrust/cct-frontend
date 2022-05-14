@@ -1,0 +1,20 @@
+.title h1 {
+  margin-bottom: 8px;
+  line-height: 1em;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.title:not(.no_space) h1 {
+  letter-spacing: 2px;
+}
+
+.title:not(.no_decoration) {
+  padding-left: 10px;
+  border-left: 4px solid #718ec1;
+}
+
+.title p {
+  color: #6b6b6b;
+}
+/*# sourceMappingURL=index.module.css.map */
