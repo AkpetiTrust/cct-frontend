@@ -6,22 +6,39 @@
           transform: translateX(-50%);
   background-color: #fff;
   border-radius: 5px;
-  max-width: 600px;
-  padding: 40px;
+  width: 500px;
+  padding: 40px 100px;
   padding-bottom: 70px;
   -webkit-box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
-  color: rgba(0, 0, 0, 0.8);
+}
+
+.inner svg {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+  width: 20px;
+}
+
+.inner .center {
+  margin: 0 auto;
 }
 
 .inner .title {
   margin-bottom: 15px;
   color: rgba(0, 0, 0, 0.75);
   text-align: center;
+  font-weight: 700;
 }
 
-.inner .title span {
-  font-weight: 800;
+.inner .form_group {
+  margin-bottom: 20px;
+}
+
+.inner .form_group label {
+  display: block;
+  margin-bottom: 3px;
 }
 
 .inner button {

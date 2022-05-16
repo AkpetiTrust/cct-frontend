@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./index.module.css";
-import { Button } from "../../../../../../components";
+import { Button, Popup } from "../../../../../../components";
 
 function Message({
   message: { name, message, id },
@@ -8,14 +8,7 @@ function Message({
   setMessageShown,
 }) {
   return (
-    <div
-      className={style.popup}
-      onClick={(e) => {
-        if (e.target.className === style.popup) {
-          setMessageShown(false);
-        }
-      }}
-    >
+    <Popup setPopupShown={setMessageShown}>
       <div className={style.inner}>
         <p className={style.title}>
           <span>{name}</span> says:
@@ -32,7 +25,7 @@ function Message({
           DELETE MESSAGE
         </Button>
       </div>
-    </div>
+    </Popup>
   );
 }
 

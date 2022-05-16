@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { Dashboard } from "../../components";
-import { Certification, Results, Feedback, Messages } from "./subpages";
+import {
+  Certification,
+  Results,
+  Feedback,
+  Messages,
+  Students,
+} from "./subpages";
 import { useParams } from "react-router-dom";
 
 function DashBoardPage() {
@@ -15,6 +21,7 @@ function DashBoardPage() {
     },
     admin: {
       messages: <Messages />,
+      students: <Students />,
     },
   };
 
