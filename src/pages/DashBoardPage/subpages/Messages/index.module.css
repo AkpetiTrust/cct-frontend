@@ -16,4 +16,8 @@
 .messages .center table td:nth-child(2) {
   cursor: pointer;
 }
+
+.messages .center table td:nth-child(3) {
+  padding-left: 5px;
+}
 /*# sourceMappingURL=index.module.css.map */

@@ -1,0 +1,32 @@
+.input {
+  display: none;
+}
+
+.input:checked + .label {
+  background-color: #2b73f3;
+}
+
+.input:checked + .label::before {
+  content: url("../../assets/check.svg");
+}
+
+.label {
+  display: block;
+  position: relative;
+  --size: 20px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+.label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  width: 100%;
+}
+/*# sourceMappingURL=index.module.css.map */
