@@ -1,0 +1,16 @@
+.faculties {
+  position: relative;
+  padding: 0 30px;
+}
+
+.faculties .center {
+  margin: 0 auto;
+  padding-top: 40px;
+  max-width: 700px;
+}
+
+.faculties .center table {
+  margin-top: 35px;
+  margin-bottom: 40px;
+}
+/*# sourceMappingURL=index.module.css.map */

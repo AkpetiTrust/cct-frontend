@@ -7,7 +7,7 @@ import {
   Table,
 } from "../../../../components";
 import { truncateWords } from "../../../../utils/functions";
-import { Student } from "./components";
+import { Student, DeleteUser } from "./components";
 import style from "./index.module.css";
 
 function Students() {
@@ -48,6 +48,9 @@ function Students() {
   const [studentPopupRole, setStudentPopupRole] = useState("add");
   const [studentToEdit, setStudentToEdit] = useState(null);
 
+  const [deletePopupShown, setDeletePopupShown] = useState(false);
+  const [numberToDelete, setNumberToDelete] = useState(0);
+
   return (
     <Main className={style.students}>
       <div className={style.center}>
@@ -82,6 +85,13 @@ function Students() {
                           setStudentPopupShown(true);
                         },
                       },
+                      {
+                        text: "Delete",
+                        onClick: () => {
+                          setNumberToDelete(registration_number);
+                          setDeletePopupShown(true);
+                        },
+                      },
                     ]}
                   />
                 </td>
@@ -105,6 +115,13 @@ function Students() {
           setStudentPopupShown={setStudentPopupShown}
           student={studentToEdit}
           setStudents={setStudents}
+        />
+      )}
+      {deletePopupShown && (
+        <DeleteUser
+          setStudents={setStudents}
+          setPopupShown={setDeletePopupShown}
+          registration_number={numberToDelete}
         />
       )}
     </Main>

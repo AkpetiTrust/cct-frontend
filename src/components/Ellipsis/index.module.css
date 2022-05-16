@@ -18,6 +18,7 @@
 
 .ellipsis .options p {
   cursor: pointer;
+  padding-left: 8px;
 }
 
 .ellipsis .options p:not(:last-child) {

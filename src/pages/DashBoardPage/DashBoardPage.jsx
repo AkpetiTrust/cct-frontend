@@ -6,6 +6,7 @@ import {
   Feedback,
   Messages,
   Students,
+  Faculties,
 } from "./subpages";
 import { useParams } from "react-router-dom";
 
@@ -22,6 +23,7 @@ function DashBoardPage() {
     admin: {
       messages: <Messages />,
       students: <Students />,
+      faculties: <Faculties />,
     },
   };
 
