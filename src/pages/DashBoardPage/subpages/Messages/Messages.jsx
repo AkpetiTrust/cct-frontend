@@ -6,7 +6,9 @@ import {
   Table,
   Button,
   CheckBox,
+  Ellipsis,
 } from "../../../../components";
+import { Message } from "./components";
 import { truncateWords } from "../../../../utils/functions";
 
 function Messages() {
@@ -19,7 +21,7 @@ function Messages() {
       selected: false,
     },
     {
-      name: "Akpeti Trust",
+      name: "James John",
       message:
         "I have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so so. I have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so soI have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so so",
       id: 2,
@@ -47,6 +49,14 @@ function Messages() {
       selected: false,
     },
   ]);
+
+  const [message, setMessage] = useState({ name: "", message: "", id: 0 });
+  const [messageShown, setMessageShown] = useState(false);
+
+  const showMessage = (message) => {
+    setMessage(message);
+    setMessageShown(true);
+  };
 
   const handleCheckChange = (e, id) => {
     const selected = e.currentTarget.checked;
@@ -82,7 +92,25 @@ function Messages() {
             {messages.map(({ name, message, id, selected }) => (
               <tr key={id}>
                 <td>{name}</td>
-                <td>{truncateWords(message, 10)}</td>
+                <td
+                  onClick={() => {
+                    showMessage({ name, message, id });
+                  }}
+                >
+                  {truncateWords(message, 10)}
+                </td>
+                <td>
+                  <Ellipsis
+                    options={[
+                      {
+                        text: "View",
+                        onClick: () => {
+                          showMessage({ name, message, id });
+                        },
+                      },
+                    ]}
+                  />
+                </td>
                 <td>
                   <CheckBox
                     name={id}
@@ -96,6 +124,14 @@ function Messages() {
         </Table>
         <Button onClick={deleteSelected}>DELETE SELECTED</Button>
       </div>
+
+      {messageShown && (
+        <Message
+          message={message}
+          setMessageShown={setMessageShown}
+          setMessages={setMessages}
+        />
+      )}
     </Main>
   );
 }

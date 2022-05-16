@@ -1,4 +1,5 @@
 .messages {
+  position: relative;
   padding: 0 30px;
   .center {
     margin: 0 auto;
@@ -7,12 +8,12 @@
 
     table {
       margin-top: 40px;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
 
       td:nth-child(2) {
         cursor: pointer;
       }
-      td:nth-child(3) {
+      td:nth-child(4) {
         padding-left: 5px;
       }
     }

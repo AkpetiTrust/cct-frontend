@@ -1,3 +1,7 @@
 export default function truncateWords(words, numberOfWords) {
-  return words.split(" ").slice(0, numberOfWords).join(" ") + "...";
+  let wordsArray = words.split(" ");
+  if (wordsArray.length <= numberOfWords) {
+    return words;
+  }
+  return wordsArray.slice(0, numberOfWords).join(" ") + "...";
 }
