@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Dashboard } from "../../components";
-import { Certification, Results, Feedback } from "./subpages";
+import { Certification, Results, Feedback, Messages } from "./subpages";
 import { useParams } from "react-router-dom";
 
 function DashBoardPage() {
-  const [owner, setOwner] = useState("student");
+  const [owner, setOwner] = useState("admin");
   const { component } = useParams();
 
   const dashboardPages = {
@@ -12,6 +12,9 @@ function DashBoardPage() {
       certification: <Certification />,
       results: <Results />,
       feedback: <Feedback />,
+    },
+    admin: {
+      messages: <Messages />,
     },
   };
 

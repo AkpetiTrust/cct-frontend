@@ -1,0 +1,19 @@
+.messages {
+  padding: 0 30px;
+}
+
+.messages .center {
+  margin: 0 auto;
+  padding-top: 40px;
+  max-width: 800px;
+}
+
+.messages .center table {
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.messages .center table td:nth-child(2) {
+  cursor: pointer;
+}
+/*# sourceMappingURL=index.module.css.map */

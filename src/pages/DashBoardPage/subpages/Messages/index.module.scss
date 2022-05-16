@@ -1,0 +1,17 @@
+.messages {
+  padding: 0 30px;
+  .center {
+    margin: 0 auto;
+    padding-top: 40px;
+    max-width: 800px;
+
+    table {
+      margin-top: 40px;
+      margin-bottom: 30px;
+
+      td:nth-child(2) {
+        cursor: pointer;
+      }
+    }
+  }
+}

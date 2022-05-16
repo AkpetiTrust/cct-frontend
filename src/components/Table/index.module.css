@@ -1,0 +1,31 @@
+.responsive {
+  width: 100%;
+  overflow: auto;
+}
+
+.table {
+  width: 100%;
+}
+
+.table th {
+  text-align: left;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.63);
+  padding: 10px 0;
+  padding-right: 15px;
+}
+
+.table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 15px 0;
+  padding-right: 15px;
+}
+
+.table tr {
+  -webkit-box-shadow: 0px 1.5px 0px rgba(0, 0, 0, 0.07);
+          box-shadow: 0px 1.5px 0px rgba(0, 0, 0, 0.07);
+  position: relative;
+}
+/*# sourceMappingURL=index.module.css.map */
