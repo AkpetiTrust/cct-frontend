@@ -1,0 +1,43 @@
+.step {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.step .tab {
+  --size: 27px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  color: #fff;
+  background-color: #b8b2b6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 700;
+}
+
+.step .text {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.step.active .tab {
+  background-color: #597ab6;
+}
+
+.step.active .text {
+  color: #000;
+}
+/*# sourceMappingURL=index.module.css.map */

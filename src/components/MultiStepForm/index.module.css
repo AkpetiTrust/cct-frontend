@@ -1,0 +1,80 @@
+.multistep .steps {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 40px;
+}
+
+.multistep .container {
+  overflow: hidden;
+}
+
+.multistep .container .main {
+  position: relative;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+  height: 500px;
+}
+
+.multistep .container .main > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.multistep .container .main > div:nth-child(2) {
+  left: 100%;
+}
+
+.multistep .container .main > div:nth-child(3) {
+  left: 200%;
+}
+
+.multistep .container .main .students button,
+.multistep .container .main .time button,
+.multistep .container .main .faculty button {
+  margin-top: 40px;
+}
+
+.multistep .container .main .time p {
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+.multistep .container .main .time input {
+  all: unset;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 3px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.47);
+  border-radius: 6px;
+}
+
+.multistep .container .main .faculty p {
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+.multistep .container .main .faculty select {
+  all: unset;
+  cursor: pointer;
+  display: block;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 8px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.47);
+  border-radius: 6px;
+  width: 400px;
+}
+/*# sourceMappingURL=index.module.css.map */

@@ -8,6 +8,7 @@ import Table from "./Table/Table";
 import CheckBox from "./CheckBox/CheckBox";
 import Ellipsis from "./Ellipsis/Ellipsis";
 import Popup from "./Popup/Popup";
+import MultistepForm from "./MultiStepForm/MultistepForm";
 
 export {
   Button,
@@ -20,4 +21,5 @@ export {
   CheckBox,
   Ellipsis,
   Popup,
+  MultistepForm,
 };

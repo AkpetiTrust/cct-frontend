@@ -9,6 +9,7 @@ import {
   Faculties,
   Courses,
   Course,
+  NewBatch,
 } from "./subpages";
 import { useParams } from "react-router-dom";
 
@@ -27,6 +28,7 @@ function DashBoardPage() {
       students: <Students />,
       faculties: <Faculties />,
       courses: <Courses />,
+      batch: <NewBatch />,
     },
   };
 

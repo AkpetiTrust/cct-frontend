@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Main, SectionTitle, Ul } from "../../../../components";
+import { Link } from "react-router-dom";
 import style from "./index.module.css";
 
 function Course() {
@@ -104,7 +105,7 @@ function Course() {
             ))}
           </Ul>
         </div>
-        <a href="#" className={style.button}>
+        <Link to={"/dashboard/batch"} className={style.button}>
           NEW BATCH{" "}
           <svg
             width="17"
@@ -121,7 +122,7 @@ function Course() {
               fillOpacity="0.75"
             />
           </svg>
-        </a>
+        </Link>
         <div className={style.section}>
           <h3>Students:</h3>
           <ol>
