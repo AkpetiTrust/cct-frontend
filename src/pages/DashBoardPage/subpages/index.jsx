@@ -4,5 +4,16 @@ import Feedback from "./Feedback/Feedback";
 import Messages from "./Messages/Messages";
 import Students from "./Students/Students";
 import Faculties from "./Faculties/Faculties";
+import Courses from "./Courses/Courses";
+import Course from "./Course/Course";
 
-export { Certification, Results, Feedback, Messages, Students, Faculties };
+export {
+  Certification,
+  Results,
+  Feedback,
+  Messages,
+  Students,
+  Faculties,
+  Courses,
+  Course,
+};

@@ -7,12 +7,14 @@ import {
   Messages,
   Students,
   Faculties,
+  Courses,
+  Course,
 } from "./subpages";
 import { useParams } from "react-router-dom";
 
 function DashBoardPage() {
   const [owner, setOwner] = useState("admin");
-  const { component } = useParams();
+  const { component, course, id } = useParams();
 
   const dashboardPages = {
     student: {
@@ -24,10 +26,15 @@ function DashBoardPage() {
       messages: <Messages />,
       students: <Students />,
       faculties: <Faculties />,
+      courses: <Courses />,
     },
   };
 
-  const dashboardPage = dashboardPages[owner]?.[component] || <div></div>;
+  let dashboardPage = dashboardPages[owner]?.[component] || <div></div>;
+
+  if (course) {
+    dashboardPage = <Course />;
+  }
 
   return <Dashboard owner={owner}>{dashboardPage}</Dashboard>;
 }

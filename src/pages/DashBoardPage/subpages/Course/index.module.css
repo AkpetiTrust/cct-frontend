@@ -1,0 +1,74 @@
+.course {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.course > div {
+  padding: 40px;
+}
+
+.course .section {
+  margin-top: 30px;
+}
+
+.course .section p,
+.course .section li {
+  color: #6b6b6b;
+  font-size: 15px;
+}
+
+.course .button {
+  all: unset;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  text-decoration: underline;
+  font-size: 15px;
+}
+
+.course .about .button {
+  color: #4d0d0a;
+  margin-top: 30px;
+}
+
+.course ul {
+  margin-top: 15px;
+}
+
+.course h3 {
+  font-size: 18px;
+  line-height: 1em;
+  margin-bottom: 10px;
+}
+
+.course li {
+  margin-bottom: 10px;
+}
+
+.course .more_info {
+  background-color: #fff8f5;
+}
+
+.course .more_info .section:first-child {
+  margin-top: 0;
+}
+
+.course .more_info ul a {
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.course .more_info .button {
+  margin: 40px 0;
+}
+
+.course .more_info ol {
+  list-style-position: inside;
+}
+/*# sourceMappingURL=index.module.css.map */

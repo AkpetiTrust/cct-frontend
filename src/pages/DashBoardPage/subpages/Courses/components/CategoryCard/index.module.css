@@ -1,0 +1,26 @@
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px 30px;
+  padding-bottom: 40px;
+  -webkit-box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.2);
+  border-top: 3px solid #ec746f;
+  max-width: 300px;
+  height: 100%;
+}
+
+.card .title {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.card li {
+  margin-bottom: 20px;
+}
+
+.card li a {
+  color: #243451;
+  font-size: 0.9em;
+}
+/*# sourceMappingURL=index.module.css.map */

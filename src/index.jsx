@@ -12,6 +12,11 @@ root.render(
         <Route path="/" exact element={<Login />} />
         <Route path="/dashboard" exact element={<DashBoardPage />} />
         <Route path="/dashboard/:component" exact element={<DashBoardPage />} />
+        <Route
+          path="/dashboard/:component/:course/:id"
+          exact
+          element={<DashBoardPage />}
+        />
       </Routes>
     </Router>
   </React.StrictMode>

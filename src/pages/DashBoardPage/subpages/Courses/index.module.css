@@ -1,0 +1,26 @@
+.courses {
+  padding: 40px;
+}
+
+.courses .categories {
+  margin-top: 40px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
+}
+
+.courses .button_grid {
+  margin-top: 60px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
+}
+
+.courses .button_grid button {
+  max-width: 300px;
+}
+/*# sourceMappingURL=index.module.css.map */

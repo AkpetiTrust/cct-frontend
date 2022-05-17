@@ -1,0 +1,21 @@
+.courses {
+  padding: 40px;
+
+  .categories {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+  }
+
+  .button_grid {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+
+    button {
+      max-width: 300px;
+    }
+  }
+}
