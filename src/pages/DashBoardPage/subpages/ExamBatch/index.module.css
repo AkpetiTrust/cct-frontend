@@ -1,0 +1,80 @@
+.batch {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.batch .main {
+  padding: 40px;
+  padding-top: 60px;
+}
+
+.batch .main .title {
+  letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.75);
+  font-size: 1.1em;
+  text-align: center;
+}
+
+.batch .main > svg {
+  display: block;
+  margin: 30px auto;
+}
+
+.batch .main .talk {
+  color: rgba(0, 0, 0, 0.55);
+  font-size: 0.9em;
+}
+
+.batch .main .btn_group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 30px;
+}
+
+.batch .main .btn_group button {
+  font-size: 12px;
+  letter-spacing: 0.07em;
+}
+
+.batch .main .btn_group button:first-child {
+  margin-right: 30px;
+}
+
+.batch .main .btn_group button:last-child {
+  background-color: transparent;
+  color: #1f2d47;
+  border: 1px solid #1f2d47;
+}
+
+.batch aside {
+  background-color: #fff8f5;
+  padding: 40px;
+}
+
+.batch aside section {
+  margin-bottom: 20px;
+}
+
+.batch aside section p {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.batch aside section p.title {
+  font-weight: 700;
+  margin-bottom: 5px;
+  line-height: 1em;
+}
+
+.batch aside section ol {
+  list-style-position: inside;
+}
+/*# sourceMappingURL=index.module.css.map */

@@ -13,7 +13,7 @@ root.render(
         <Route path="/dashboard" exact element={<DashBoardPage />} />
         <Route path="/dashboard/:component" exact element={<DashBoardPage />} />
         <Route
-          path="/dashboard/:component/:course/:id"
+          path="/dashboard/:component/:id"
           exact
           element={<DashBoardPage />}
         />

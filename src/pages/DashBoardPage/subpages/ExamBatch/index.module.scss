@@ -1,0 +1,70 @@
+.batch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .main {
+    padding: 40px;
+    padding-top: 60px;
+
+    .title {
+      letter-spacing: 0.08em;
+      color: rgba(0, 0, 0, 0.75);
+      font-size: 1.1em;
+      text-align: center;
+    }
+
+    & > svg {
+      display: block;
+      margin: 30px auto;
+    }
+
+    .talk {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 0.9em;
+    }
+
+    .btn_group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+
+      button {
+        font-size: 12px;
+        letter-spacing: 0.07em;
+      }
+
+      button:first-child {
+        margin-right: 30px;
+      }
+
+      button:last-child {
+        background-color: transparent;
+        color: #1f2d47;
+        border: 1px solid #1f2d47;
+      }
+    }
+  }
+
+  aside {
+    background-color: #fff8f5;
+    padding: 40px;
+
+    section {
+      margin-bottom: 20px;
+
+      p {
+        color: rgba(0, 0, 0, 0.6);
+        &.title {
+          font-weight: 700;
+          margin-bottom: 5px;
+          line-height: 1em;
+        }
+      }
+
+      ol {
+        list-style-position: inside;
+      }
+    }
+  }
+}
