@@ -7,6 +7,7 @@ import Faculties from "./Faculties/Faculties";
 import Courses from "./Courses/Courses";
 import Course from "./Course/Course";
 import NewBatch from "./NewBatch/NewBatch";
+import FacultyBatches from "./FacultyBatches/FacultyBatches";
 
 export {
   Certification,
@@ -18,4 +19,5 @@ export {
   Courses,
   Course,
   NewBatch,
+  FacultyBatches,
 };

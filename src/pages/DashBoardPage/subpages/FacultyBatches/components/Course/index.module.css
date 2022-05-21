@@ -1,0 +1,21 @@
+.course {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 25px;
+  padding-left: 20px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  border-left: 3px solid #7591c2;
+}
+
+.course p {
+  cursor: pointer;
+  text-decoration: underline;
+  color: rgba(0, 0, 0, 0.62);
+}
+/*# sourceMappingURL=index.module.css.map */

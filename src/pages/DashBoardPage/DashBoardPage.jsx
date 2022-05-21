@@ -10,11 +10,12 @@ import {
   Courses,
   Course,
   NewBatch,
+  FacultyBatches,
 } from "./subpages";
 import { useParams } from "react-router-dom";
 
 function DashBoardPage() {
-  const [owner, setOwner] = useState("admin");
+  const [owner, setOwner] = useState("faculty");
   const { component, course, id } = useParams();
 
   const dashboardPages = {
@@ -29,6 +30,9 @@ function DashBoardPage() {
       faculties: <Faculties />,
       courses: <Courses />,
       batch: <NewBatch />,
+    },
+    faculty: {
+      "exam-batches": <FacultyBatches />,
     },
   };
 

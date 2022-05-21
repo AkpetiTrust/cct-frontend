@@ -1,0 +1,71 @@
+.batches {
+  padding: 40px 60px;
+}
+
+.batches .list_grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-gap: 50px;
+  margin-top: 80px;
+}
+
+.batches .list_grid .title {
+  font-size: 1.1em;
+  font-weight: 700;
+  line-height: 1em;
+  margin-bottom: 18px;
+}
+
+.batches .list_grid .pending_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.batches .list_grid .pending_title .arrow {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  top: 0;
+  width: 100px;
+  -webkit-transform: translateX(calc(100% + 20px)) translateY(-55px);
+          transform: translateX(calc(100% + 20px)) translateY(-55px);
+}
+
+.batches .list_grid .pending_title .arrow svg {
+  width: 100%;
+}
+
+.batches .list_grid ul li {
+  margin-top: 8px;
+}
+
+.batches .list_grid ul li a {
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.batches .courses {
+  margin-top: 60px;
+}
+
+.batches .courses .title {
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.batches .courses .grid {
+  margin-top: 40px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+}
+/*# sourceMappingURL=index.module.css.map */
