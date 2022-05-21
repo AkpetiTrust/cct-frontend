@@ -1,4 +1,4 @@
-.course {
+.li {
   display: flex;
   align-items: center;
   padding: 25px;
@@ -6,10 +6,5 @@
   background-color: #fff;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
   border-left: 3px solid #7591c2;
-
-  p {
-    cursor: pointer;
-    text-decoration: underline;
-    color: rgba($color: #000000, $alpha: 0.62);
-  }
+  list-style-type: none;
 }

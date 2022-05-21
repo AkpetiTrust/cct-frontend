@@ -12,11 +12,12 @@ import {
   NewBatch,
   FacultyBatches,
   ExamBatch,
+  CBT,
 } from "./subpages";
 import { useParams } from "react-router-dom";
 
 function DashBoardPage() {
-  const [owner, setOwner] = useState("faculty");
+  const [owner, setOwner] = useState("student");
   const { component, id } = useParams();
 
   const dashboardPages = {
@@ -24,6 +25,7 @@ function DashBoardPage() {
       certification: <Certification />,
       results: <Results />,
       feedback: <Feedback />,
+      cbt: <CBT />,
     },
     admin: {
       messages: <Messages />,

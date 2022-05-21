@@ -9,6 +9,7 @@ import CheckBox from "./CheckBox/CheckBox";
 import Ellipsis from "./Ellipsis/Ellipsis";
 import Popup from "./Popup/Popup";
 import MultistepForm from "./MultiStepForm/MultistepForm";
+import Li from "./Li/Li";
 
 export {
   Button,
@@ -22,4 +23,5 @@ export {
   Ellipsis,
   Popup,
   MultistepForm,
+  Li,
 };

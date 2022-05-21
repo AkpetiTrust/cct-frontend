@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Main, SectionTitle, Ul } from "../../../../components";
-import { Course } from "./components";
+import { Main, SectionTitle, Ul, Li } from "../../../../components";
 import style from "./index.module.css";
 
 function FacultyBatches() {
@@ -127,11 +126,13 @@ function FacultyBatches() {
       </section>
       <section className={style.courses}>
         <p className={style.title}>View batches by course</p>
-        <div className={style.grid}>
+        <ul className={style.grid}>
           {courses.map((course) => (
-            <Course key={course} course={course} />
+            <Li key={course}>
+              <a href="#">{course}</a>
+            </Li>
           ))}
-        </div>
+        </ul>
       </section>
     </Main>
   );

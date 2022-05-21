@@ -1,0 +1,68 @@
+.cbt .inner {
+  margin: 0 auto;
+  max-width: 600px;
+  padding-top: 30px;
+}
+
+.cbt .inner h1 {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: rgba(0, 0, 0, 0.75);
+  text-align: center;
+}
+
+.cbt .inner h1 + p {
+  margin: 0 auto;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 17px;
+  margin-top: 8px;
+  color: rgba(0, 0, 0, 0.56);
+}
+
+.cbt .inner .middle svg {
+  display: block;
+  margin: 0 auto;
+  max-width: 350px;
+}
+
+.cbt .inner .middle button {
+  border-radius: 80px;
+  max-width: 400px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.cbt .inner .upcoming {
+  margin-top: 40px;
+}
+
+.cbt .inner .upcoming .title {
+  color: rgba(0, 0, 0, 0.75);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.cbt .inner .upcoming .grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
+  margin-top: 30px;
+}
+
+.cbt .inner .watermark {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  z-index: -1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=index.module.css.map */

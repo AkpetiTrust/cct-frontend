@@ -1,4 +1,4 @@
-.course {
+.li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11,11 +11,6 @@
   -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
   border-left: 3px solid #7591c2;
-}
-
-.course p {
-  cursor: pointer;
-  text-decoration: underline;
-  color: rgba(0, 0, 0, 0.62);
+  list-style-type: none;
 }
 /*# sourceMappingURL=index.module.css.map */

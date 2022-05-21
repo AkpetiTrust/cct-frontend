@@ -68,4 +68,8 @@
       grid-template-columns: repeat(3, 1fr);
   grid-gap: 40px;
 }
+
+.batches .courses .grid a {
+  color: rgba(0, 0, 0, 0.62);
+}
 /*# sourceMappingURL=index.module.css.map */
