@@ -10,6 +10,7 @@ import Ellipsis from "./Ellipsis/Ellipsis";
 import Popup from "./Popup/Popup";
 import MultistepForm from "./MultiStepForm/MultistepForm";
 import Li from "./Li/Li";
+import Curve from "./Curve/Curve";
 
 export {
   Button,
@@ -24,4 +25,5 @@ export {
   Popup,
   MultistepForm,
   Li,
+  Curve,
 };

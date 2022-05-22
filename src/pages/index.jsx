@@ -1,4 +1,5 @@
 import DashBoardPage from "./DashBoardPage/DashBoardPage";
 import Login from "./Login/Login";
+import WaitingArea from "./WaitingArea/WaitingArea";
 
-export { DashBoardPage, Login };
+export { DashBoardPage, Login, WaitingArea };

@@ -1,0 +1,38 @@
+.waiting {
+  padding-top: 100px;
+  position: relative;
+}
+
+.waiting .inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.waiting .inner figure {
+  width: 65px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.waiting .inner figure img {
+  max-width: 100%;
+}
+
+.waiting .inner h1 {
+  text-align: center;
+  letter-spacing: 0.09em;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 18px;
+  line-height: 1em;
+  margin-bottom: 15px;
+}
+
+.waiting .inner .talk {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  color: rgba(0, 0, 0, 0.56);
+  margin-bottom: 60px;
+}
+/*# sourceMappingURL=index.module.css.map */

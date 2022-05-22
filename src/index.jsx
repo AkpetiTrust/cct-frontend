@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { DashBoardPage, Login } from "./pages";
+import { DashBoardPage, Login, WaitingArea } from "./pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -17,6 +17,7 @@ root.render(
           exact
           element={<DashBoardPage />}
         />
+        <Route path="/waiting-area/:id" exact element={<WaitingArea />} />
       </Routes>
     </Router>
   </React.StrictMode>
