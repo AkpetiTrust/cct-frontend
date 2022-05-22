@@ -1,0 +1,46 @@
+.warning {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  padding-left: 20px;
+  background-color: #fdf2f1;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  border-left: 3px solid #da251d;
+  position: absolute;
+  top: 80px;
+  right: 40px;
+  z-index: 7;
+  transition: opacity 0.4s;
+  font-size: 15px;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+  cursor: pointer;
+
+  .icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 18px;
+  }
+
+  p {
+    max-width: 90%;
+  }
+
+  &.fade {
+    opacity: 1;
+    animation: fadeOut 0.5s forwards;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}

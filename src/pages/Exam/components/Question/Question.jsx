@@ -9,6 +9,7 @@ function Question({
     setQuestions,
     activeQuestionIndex,
     setActiveQuestionIndex,
+    setSubmitConfirmShown,
   },
 }) {
   const questionToShow = questions[activeQuestionIndex];
@@ -42,7 +43,13 @@ function Question({
           Previous
         </Button>
         {activeQuestionIndex === questions.length - 1 ? (
-          <Button onClick={() => {}}>Submit</Button>
+          <Button
+            onClick={() => {
+              setSubmitConfirmShown(true);
+            }}
+          >
+            Submit
+          </Button>
         ) : (
           <Button
             onClick={() => {

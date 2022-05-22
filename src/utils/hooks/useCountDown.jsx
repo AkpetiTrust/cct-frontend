@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useInterval from "./useInterval";
+import { convertToTwoDigits } from "../functions";
 
 function useCountDown(targetTime) {
   const [milliSecondsLeft, setMilliSecondsLeft] = useState(
@@ -34,16 +35,8 @@ function useCountDown(targetTime) {
 }
 
 function getMilliSecondsLeft(targetTime) {
+  if (!targetTime) return 0;
   return targetTime.getTime() - Date.now();
-}
-
-function convertToTwoDigits(number) {
-  number = number.toString();
-  if (number.length == 1) {
-    number = "0" + number;
-  }
-
-  return number;
 }
 
 export default useCountDown;

@@ -2,13 +2,24 @@ import React, { useState, useEffect } from "react";
 import { Main } from "../../components";
 import logo from "../../assets/logo.png";
 import style from "./index.module.css";
-import { Question } from "./components";
+import {
+  Counter,
+  Question,
+  QuestionIndicator,
+  SubmitConfirm,
+  Warning,
+} from "./components";
+import { getFullTime } from "../../utils/functions";
 
 function Exam() {
   const [course, setCourse] = useState("PHP");
-  const [durationInMinutes, setDurationInMinutes] = useState(50);
+  const [durationInMinutes, setDurationInMinutes] = useState(5.2);
   const [startTime, setStartTime] = useState(new Date());
-  const [stopTime, setStopTime] = useState(null);
+  const [stopTime, setStopTime] = useState(() => {
+    let durationInMiliiseconds = durationInMinutes * 60 * 1000;
+    let stopTimestamp = startTime.getTime() + durationInMiliiseconds;
+    return new Date(stopTimestamp);
+  });
   const [questions, setQuestions] = useState([
     {
       question:
@@ -268,12 +279,15 @@ function Exam() {
     },
   ]);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
+  const [warningShown, setWarningShown] = useState(false);
+  const [submitConfirmShown, setSubmitConfirmShown] = useState(false);
 
   const questionProps = {
     questions,
     setQuestions,
     activeQuestionIndex,
     setActiveQuestionIndex,
+    setSubmitConfirmShown,
   };
 
   return (
@@ -285,15 +299,34 @@ function Exam() {
           <Question questionProps={questionProps} />
           <div className={style.info}>
             <p>
-              Start Time : <b>{}</b>
+              Start Time : <b>{getFullTime(startTime)}</b>
             </p>
             <p>
-              Stop Time : <b>{}</b>
+              Stop Time : <b>{getFullTime(stopTime)}</b>
             </p>
-            <p className={style.submit}>Submit</p>
+            <p
+              className={style.submit}
+              onClick={() => {
+                setSubmitConfirmShown(true);
+              }}
+            >
+              Submit
+            </p>
           </div>
         </section>
+        <section className={style.aside}>
+          <Counter setWarningShown={setWarningShown} stopTime={stopTime} />
+          <QuestionIndicator
+            questions={questions}
+            setActiveQuestionIndex={setActiveQuestionIndex}
+          />
+        </section>
       </div>
+
+      {warningShown && <Warning setWarningShown={setWarningShown} />}
+      {submitConfirmShown && (
+        <SubmitConfirm setSubmitConfirmShown={setSubmitConfirmShown} />
+      )}
     </Main>
   );
 }

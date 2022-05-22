@@ -1,0 +1,28 @@
+.button {
+  all: unset;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-weight: 700;
+  width: 35px;
+  height: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 13px;
+  border-radius: 3px;
+  color: #808080;
+  background-color: #eaeef6;
+}
+
+.button.answered {
+  color: #fff;
+  background-color: #7c96c5;
+}
+/*# sourceMappingURL=index.module.css.map */

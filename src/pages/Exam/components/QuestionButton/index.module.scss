@@ -1,0 +1,20 @@
+.button {
+  all: unset;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-weight: 700;
+  width: 35px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  border-radius: 3px;
+  color: #808080;
+  background-color: #eaeef6;
+
+  &.answered {
+    color: #fff;
+    background-color: #7c96c5;
+  }
+}

@@ -1,0 +1,67 @@
+.warning {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px;
+  padding-left: 20px;
+  background-color: #fdf2f1;
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  border-left: 3px solid #da251d;
+  position: absolute;
+  top: 80px;
+  right: 40px;
+  z-index: 7;
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+  font-size: 15px;
+  opacity: 0;
+  -webkit-animation: fadeIn 0.5s forwards;
+          animation: fadeIn 0.5s forwards;
+  cursor: pointer;
+}
+
+.warning .icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 18px;
+}
+
+.warning p {
+  max-width: 90%;
+}
+
+.warning.fade {
+  opacity: 1;
+  -webkit-animation: fadeOut 0.5s forwards;
+          animation: fadeOut 0.5s forwards;
+}
+
+@-webkit-keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=index.module.css.map */
