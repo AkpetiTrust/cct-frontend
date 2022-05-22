@@ -1,0 +1,39 @@
+.question_container {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.question_container .title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.question_container .question {
+  margin: 15px 0;
+}
+
+.question_container .options .option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.question_container .btn_group {
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 40px;
+  max-width: 350px;
+}
+
+.question_container .btn_group button {
+  font-weight: 400;
+  font-size: 16px;
+  background-color: #5577b4;
+}
+/*# sourceMappingURL=index.module.css.map */
