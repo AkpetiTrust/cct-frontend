@@ -1,38 +1,81 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import style from "./index.module.css";
 import logo from "../../assets/logo.png";
-import { Input, Button } from "../../components";
+import { Input, Button, Loading } from "../../components";
+import { postToApi } from "../../utils/functions";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const form = e.currentTarget;
+    const id = form.id.value;
+    const password = form.password.value;
+    let body;
+    if (id.slice(0, 3) === "REG") {
+      body = { registration_number: id, password: password };
+    } else {
+      body = { staff_id: id, password: password };
+    }
+
+    postToApi("login", body).then((result) => {
+      setLoading(false);
+      if (result?.response === "Invalid credentials") {
+        setError(true);
+      } else {
+        localStorage.setItem("user", JSON.stringify(result));
+        navigate("/dashboard");
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      navigate("/dashboard");
+    }
+  });
+
   return (
     <main className={style.login}>
       <div className={style.image_container}>
         <img src={logo} alt="logo" />
       </div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <p className={style.heading}>LOGIN TO YOUR CCT ACCOUNT</p>
         <div className={style.form_group}>
           <label htmlFor="id">Registration No. / Staff ID:</label>
-          <Input type={"text"} name="id" id="id" />
+          <Input required type={"text"} name="id" id="id" />
         </div>
         <div className={style.form_group}>
           <label htmlFor="password">Password:</label>
-          <Input type={"password"} name="password" id="password" />
+          <Input required type={"password"} name="password" id="password" />
         </div>
+        {error && <p className={style.error}>Invalid credentials</p>}
         <Button hasIcon gap={"10px"} backgroundColor={"#354D78"}>
-          LOGIN{" "}
-          <svg
-            width="39"
-            height="8"
-            viewBox="0 0 39 8"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M38.3536 4.35355C38.5488 4.15829 38.5488 3.84171 38.3536 3.64645L35.1716 0.464466C34.9763 0.269204 34.6597 0.269204 34.4645 0.464466C34.2692 0.659728 34.2692 0.976311 34.4645 1.17157L37.2929 4L34.4645 6.82843C34.2692 7.02369 34.2692 7.34027 34.4645 7.53553C34.6597 7.7308 34.9763 7.7308 35.1716 7.53553L38.3536 4.35355ZM0 4.5H38V3.5H0V4.5Z"
-              fill="white"
-            />
-          </svg>
+          {loading ? (
+            <Loading height={"21px"} color="#EC746F" />
+          ) : (
+            <>
+              LOGIN{" "}
+              <svg
+                width="39"
+                height="8"
+                viewBox="0 0 39 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M38.3536 4.35355C38.5488 4.15829 38.5488 3.84171 38.3536 3.64645L35.1716 0.464466C34.9763 0.269204 34.6597 0.269204 34.4645 0.464466C34.2692 0.659728 34.2692 0.976311 34.4645 1.17157L37.2929 4L34.4645 6.82843C34.2692 7.02369 34.2692 7.34027 34.4645 7.53553C34.6597 7.7308 34.9763 7.7308 35.1716 7.53553L38.3536 4.35355ZM0 4.5H38V3.5H0V4.5Z"
+                  fill="white"
+                />
+              </svg>
+            </>
+          )}
         </Button>
       </form>
       <footer>CCT— RUN FASTER</footer>

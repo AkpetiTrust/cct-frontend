@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./index.module.css";
 import {
   Main,
@@ -7,51 +7,24 @@ import {
   Button,
   CheckBox,
   Ellipsis,
+  Loading,
 } from "../../../../components";
 import { Message } from "./components";
-import { truncateWords } from "../../../../utils/functions";
+import { fetchFromApi, truncateWords } from "../../../../utils/functions";
 
 function Messages() {
-  const [messages, setMessages] = useState([
-    {
-      name: "Akpeti Trust",
-      message:
-        "I have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so so. I have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so soI have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so so",
-      id: 1,
-      selected: false,
-    },
-    {
-      name: "James John",
-      message:
-        "I have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so so. I have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so soI have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so so",
-      id: 2,
-      selected: false,
-    },
-    {
-      name: "Akpeti Trust",
-      message:
-        "I have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so so. I have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so soI have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so so",
-      id: 3,
-      selected: false,
-    },
-    {
-      name: "Akpeti Trust",
-      message:
-        "I have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so so. I have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so soI have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so so",
-      id: 4,
-      selected: false,
-    },
-    {
-      name: "Akpeti Trust",
-      message:
-        "I have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so so. I have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so soI have complaints regarding this this this. I'm just writing random words to make this a long text. Words that have no meaning are coming up. PHP, Web design, Excel, MS Word, so so so",
-      id: 5,
-      selected: false,
-    },
-  ]);
+  const [messages, setMessages] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const [message, setMessage] = useState({ name: "", message: "", id: 0 });
   const [messageShown, setMessageShown] = useState(false);
+
+  useEffect(() => {
+    fetchFromApi("messages", true).then((result) => {
+      setMessages(result.response);
+      setLoading(false);
+    });
+  }, []);
 
   const showMessage = (message) => {
     setMessage(message);
@@ -81,48 +54,54 @@ function Messages() {
           Messages from students and the website's contact form
         </SectionTitle>
 
-        <Table>
-          <thead>
-            <tr>
-              <th>Name:</th>
-              <th>Message</th>
-            </tr>
-          </thead>
-          <tbody>
-            {messages.map(({ name, message, id, selected }) => (
-              <tr key={id}>
-                <td>{name}</td>
-                <td
-                  onClick={() => {
-                    showMessage({ name, message, id });
-                  }}
-                >
-                  {truncateWords(message, 10)}
-                </td>
-                <td>
-                  <Ellipsis
-                    options={[
-                      {
-                        text: "View",
-                        onClick: () => {
-                          showMessage({ name, message, id });
-                        },
-                      },
-                    ]}
-                  />
-                </td>
-                <td>
-                  <CheckBox
-                    name={id}
-                    checked={selected}
-                    onChange={(e) => handleCheckChange(e, id)}
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-        <Button onClick={deleteSelected}>DELETE SELECTED</Button>
+        {loading ? (
+          <Loading height={"50vh"} />
+        ) : (
+          <>
+            <Table>
+              <thead>
+                <tr>
+                  <th>Name:</th>
+                  <th>Message</th>
+                </tr>
+              </thead>
+              <tbody>
+                {messages.map(({ name, message, id, selected }) => (
+                  <tr key={id}>
+                    <td>{name ? name : "Anonymous"}</td>
+                    <td
+                      onClick={() => {
+                        showMessage({ name, message, id });
+                      }}
+                    >
+                      {truncateWords(message, 10)}
+                    </td>
+                    <td>
+                      <Ellipsis
+                        options={[
+                          {
+                            text: "View",
+                            onClick: () => {
+                              showMessage({ name, message, id });
+                            },
+                          },
+                        ]}
+                      />
+                    </td>
+                    <td>
+                      <CheckBox
+                        name={id}
+                        checked={selected}
+                        onChange={(e) => handleCheckChange(e, id)}
+                      />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+            <Button onClick={deleteSelected}>DELETE SELECTED</Button>
+          </>
+        )}
       </div>
 
       {messageShown && (

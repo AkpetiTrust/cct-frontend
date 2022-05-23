@@ -2,12 +2,10 @@ import React from "react";
 import { Popup, Button } from "../../../../../../components";
 import style from "./index.module.css";
 
-function DeleteUser({ setPopupShown, registration_number, setStudents }) {
+function DeleteUser({ setPopupShown, id, setStudents }) {
   const handleDelete = () => {
     setStudents((prevStudents) =>
-      [...prevStudents].filter(
-        (student) => student.registration_number !== registration_number
-      )
+      [...prevStudents].filter((student) => student.id !== id)
     );
     setPopupShown(false);
   };

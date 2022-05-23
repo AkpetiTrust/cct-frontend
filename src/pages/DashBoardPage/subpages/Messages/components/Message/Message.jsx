@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./index.module.css";
 import { Button, Popup } from "../../../../../../components";
+import { postToApi } from "../../../../../../utils/functions";
 
 function Message({
   message: { name, message, id },
@@ -11,7 +12,7 @@ function Message({
     <Popup setPopupShown={setMessageShown}>
       <div className={style.inner}>
         <p className={style.title}>
-          <span>{name}</span> says:
+          <span>{name ? name : "Anonymous"}</span> says:
         </p>
         <p>{message}</p>
         <Button
@@ -19,6 +20,7 @@ function Message({
             setMessages((prevMessages) =>
               prevMessages.filter((message) => message.id !== id)
             );
+            postToApi(`messages/${id}`, null, true, "DELETE");
             setMessageShown(false);
           }}
         >

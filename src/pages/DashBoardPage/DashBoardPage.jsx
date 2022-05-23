@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Dashboard } from "../../components";
 import {
   Certification,
@@ -14,11 +14,28 @@ import {
   ExamBatch,
   CBT,
 } from "./subpages";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function DashBoardPage() {
   const [owner, setOwner] = useState("student");
   const { component, id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+      return navigate("/");
+    }
+
+    if (user.registration_number) {
+      setOwner("student");
+    } else if (user.is_admin) {
+      setOwner("admin");
+    } else {
+      setOwner("faculty");
+    }
+  }, []);
 
   const dashboardPages = {
     student: {

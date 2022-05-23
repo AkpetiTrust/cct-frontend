@@ -1,42 +1,60 @@
 import React, { useState } from "react";
 import { Button, Input, Popup } from "../../../../../../components";
+import { postToApi } from "../../../../../../utils/functions";
 import style from "./index.module.css";
 
-function Faculty({ role, faculty, setFacultyPopupShown, setFaculties }) {
+function Faculty({
+  role,
+  faculty,
+  setFacultyPopupShown,
+  setFaculties,
+  setLoading,
+}) {
   const action = `${role === "add" ? "ADD" : "EDIT"} FACULTY`;
 
   const [name, setName] = useState(faculty?.name || "");
   const [email, setEmail] = useState(faculty?.email || "");
-  const [staff_id, setStaff_id] = useState(faculty?.staff_id);
-
-  const randomStaffId = () =>
-    `CCTXFSYT${Math.floor(Math.random() * 9999).toPrecision(4)}`;
+  const [id, setId] = useState(faculty?.id);
+  const [error, setError] = useState(false);
 
   const addFaculty = () => {
     if (!name || !email) return;
 
-    setFaculties((prevFaculties) => [
-      {
-        name,
-        email,
-        staff_id: randomStaffId(),
-      },
-      ...prevFaculties,
-    ]);
+    setLoading(true);
 
-    setFacultyPopupShown(false);
+    postToApi("staff", { name, email }, true).then((result) => {
+      if (result.errors) {
+        setError(true);
+        setLoading(false);
+        return;
+      }
+
+      setFaculties((prevFaculties) => [...prevFaculties, result.response]);
+      setLoading(false);
+      setFacultyPopupShown(false);
+    });
   };
 
   const editFaculty = () => {
     if (!name || !email) return;
 
-    setFaculties((prevFaculties) =>
-      [...prevFaculties].map((faculty) =>
-        faculty.staff_id === staff_id ? { name, email, staff_id } : faculty
-      )
-    );
+    postToApi(`staff/${id}`, { name, email }, true, "PUT").then((result) => {
+      console.log(result);
+      if (result.errors) {
+        setError(true);
+        setLoading(false);
+        return;
+      }
 
-    setFacultyPopupShown(false);
+      setFaculties((prevFaculties) =>
+        [...prevFaculties].map((faculty) =>
+          faculty.id === id ? { ...faculty, name, email } : faculty
+        )
+      );
+
+      setLoading(false);
+      setFacultyPopupShown(false);
+    });
   };
 
   return (
@@ -86,6 +104,7 @@ function Faculty({ role, faculty, setFacultyPopupShown, setFaculties }) {
               id="email"
             />
           </div>
+          {error && <p className={style.error}>Email has been taken</p>}
           <Button onClick={role === "add" ? addFaculty : editFaculty}>
             {action}
           </Button>

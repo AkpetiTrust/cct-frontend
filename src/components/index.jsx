@@ -11,6 +11,7 @@ import Popup from "./Popup/Popup";
 import MultistepForm from "./MultiStepForm/MultistepForm";
 import Li from "./Li/Li";
 import Curve from "./Curve/Curve";
+import Loading from "./Loading/Loading";
 
 export {
   Button,
@@ -26,4 +27,5 @@ export {
   MultistepForm,
   Li,
   Curve,
+  Loading,
 };
