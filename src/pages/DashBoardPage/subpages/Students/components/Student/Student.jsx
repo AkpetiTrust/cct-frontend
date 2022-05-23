@@ -10,6 +10,7 @@ function Student({ role, student, setStudentPopupShown, setStudents }) {
   const [registration_number, setRegistration_number] = useState(
     student?.registration_number
   );
+  const [courses, setCourses] = useState([]);
 
   const randomRegistrationNumber = () =>
     `CCTXFSYT${Math.floor(Math.random() * 9999).toPrecision(4)}`;
@@ -21,7 +22,7 @@ function Student({ role, student, setStudentPopupShown, setStudents }) {
       {
         name,
         email,
-        courses: [],
+        courses,
         registration_number: randomRegistrationNumber(),
       },
       ...prevStudents,
@@ -36,7 +37,7 @@ function Student({ role, student, setStudentPopupShown, setStudents }) {
     setStudents((prevStudents) =>
       [...prevStudents].map((student) =>
         student.registration_number === registration_number
-          ? { name, email, courses: [], registration_number }
+          ? { name, email, courses, registration_number }
           : student
       )
     );

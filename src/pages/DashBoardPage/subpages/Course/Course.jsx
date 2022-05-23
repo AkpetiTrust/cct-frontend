@@ -1,51 +1,37 @@
-import React, { useState } from "react";
-import { Main, SectionTitle, Ul } from "../../../../components";
+import React, { useState, useEffect } from "react";
+import { Loading, Main, SectionTitle, Ul } from "../../../../components";
 import { Link } from "react-router-dom";
 import style from "./index.module.css";
+import { useParams } from "react-router-dom";
+import { fetchFromApi } from "../../../../utils/functions";
 
 function Course() {
-  const [title, setTitle] = useState("CCNA");
-  const [description, setDescription] = useState(
-    "A CISCO course. It has also evolved to include a command-line interface capability and can be used in standalone graphical applications"
-  );
-  const [duration, setDuration] = useState("3 months");
-  const [prerequisites, setPrerequisites] = useState([
-    "Basic computer literacy",
-    "Basic Microsoft Windows navigation skills",
-    "Basic Internet usage skills",
-    "Basic e-mail usage skills",
-  ]);
-  const [cct_advantages, setCct_advantages] = useState([
-    "Technology partners with Oracle",
-    "Get trained by Oracle certified faculties",
-    "Using Oracle's practical learning methodology",
-  ]);
-  const [faculties, setFaculties] = useState([
-    "Mr. John Doe",
-    "Mr. James Johnson",
-  ]);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [duration, setDuration] = useState("");
+  const [prerequisites, setPrerequisites] = useState([]);
+  const [cct_advantages, setCct_advantages] = useState([]);
+  const [faculties, setFaculties] = useState([]);
+  const [students, setStudents] = useState([]);
+  const [batches, setBatches] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const [students, setStudents] = useState([
-    "James John",
-    "K.A. Stroud",
-    "John Bird",
-    "Nelkon Parker",
-  ]);
+  const { id } = useParams();
 
-  const [batches, setBatches] = useState([
-    {
-      time: "May 27th 9am",
-      id: 1,
-    },
-    {
-      time: "May 29th 9am",
-      id: 2,
-    },
-    {
-      time: "June 7th 12am",
-      id: 3,
-    },
-  ]);
+  useEffect(() => {
+    fetchFromApi(`courses/${id}`, true).then(({ response }) => {
+      setLoading(false);
+      setTitle(response.course.title);
+      setDescription(response.course.description);
+      setPrerequisites(JSON.parse(response.course.prerequisites_json));
+      setCct_advantages(JSON.parse(response.course.advantages_json));
+      setFaculties(response.faculties.map((faculty) => faculty.name));
+      setStudents(response.students.map((student) => student.name));
+      setBatches(response.batches);
+    });
+  }, []);
+
+  if (loading) return <Loading height={"100vh"} />;
 
   return (
     <Main className={style.course}>

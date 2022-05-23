@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Ul } from "../../../../../../components";
 import style from "./index.module.css";
 
@@ -9,7 +10,7 @@ function CategoryCard({ categoryObject: { category, courses } }) {
       <Ul>
         {courses.map((course) => (
           <li key={course.title}>
-            <a href="#">{course.title}</a>
+            <Link to={`/dashboard/course/${course.id}`}>{course.title}</Link>
           </li>
         ))}
       </Ul>
