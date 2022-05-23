@@ -10,7 +10,11 @@ import {
   Loading,
 } from "../../../../components";
 import { Message } from "./components";
-import { fetchFromApi, truncateWords } from "../../../../utils/functions";
+import {
+  fetchFromApi,
+  postToApi,
+  truncateWords,
+} from "../../../../utils/functions";
 
 function Messages() {
   const [messages, setMessages] = useState([]);
@@ -21,7 +25,9 @@ function Messages() {
 
   useEffect(() => {
     fetchFromApi("messages", true).then((result) => {
-      setMessages(result.response);
+      setMessages(
+        result.response.map((message) => ({ ...message, selected: false }))
+      );
       setLoading(false);
     });
   }, []);
@@ -42,9 +48,15 @@ function Messages() {
   };
 
   const deleteSelected = () => {
+    let idsTodelete = messages
+      .filter((message) => message.selected)
+      .map((message) => message.id);
+
     setMessages((prevMessages) => [
       ...prevMessages.filter((message) => !message.selected),
     ]);
+
+    postToApi("delete-messages", { ids: JSON.stringify(idsTodelete) }, true);
   };
 
   return (

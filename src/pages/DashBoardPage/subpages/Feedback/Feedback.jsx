@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Main, SectionTitle, Input, Button } from "../../../../components";
+import { postToApi } from "../../../../utils/functions";
+import { Success } from "./components";
 import style from "./index.module.css";
 
 function Feedback() {
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const name = form.name.value;
+    const message = form.message.value;
+    if (!message) return;
+    postToApi("messages", { name, message });
+    form.reset();
+    setSuccess(true);
+  };
+
   return (
     <Main className={style.feedback}>
       <SectionTitle title={"FEEDBACK"} width={"300px"}>
@@ -378,16 +393,17 @@ function Feedback() {
           </svg>
         </div>
         <div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className={style.form_group}>
               <label htmlFor="name">Name (Can be left blank):</label>
-              <Input type={"text"} name="name" id="message" />
+              <Input type={"text"} name="name" id="name" />
             </div>
             <div className={style.form_group}>
               <label htmlFor="message">Message: </label>
               <textarea name="message" id="message"></textarea>
             </div>
             <Button>SUBMIT MESSAGE</Button>
+            {success && <Success setSuccess={setSuccess} />}
           </form>
         </div>
       </section>
