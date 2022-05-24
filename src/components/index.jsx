@@ -12,6 +12,7 @@ import MultistepForm from "./MultiStepForm/MultistepForm";
 import Li from "./Li/Li";
 import Curve from "./Curve/Curve";
 import Loading from "./Loading/Loading";
+import ListSelect from "./ListSelect/ListSelect";
 
 export {
   Button,
@@ -28,4 +29,5 @@ export {
   Li,
   Curve,
   Loading,
+  ListSelect,
 };

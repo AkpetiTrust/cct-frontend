@@ -1,48 +1,75 @@
 import React, { useState } from "react";
-import { Button, Input, Popup } from "../../../../../../components";
+import { Button, Input, ListSelect, Popup } from "../../../../../../components";
+import { postToApi } from "../../../../../../utils/functions";
 import style from "./index.module.css";
 
-function Student({ role, student, setStudentPopupShown, setStudents }) {
+function Student({
+  role,
+  student,
+  setStudentPopupShown,
+  setStudents,
+  totalCourses,
+}) {
   const action = `${role === "add" ? "ADD" : "EDIT"} STUDENT`;
 
   const [name, setName] = useState(student?.name || "");
   const [email, setEmail] = useState(student?.email || "");
-  const [registration_number, setRegistration_number] = useState(
-    student?.registration_number
+  const [error, setError] = useState(false);
+  const [id, setId] = useState(student?.id);
+  const [courses, setCourses] = useState(
+    student?.courses ? student.courses.map((course) => course.id) : [1]
   );
-  const [courses, setCourses] = useState([]);
-
-  const randomRegistrationNumber = () =>
-    `CCTXFSYT${Math.floor(Math.random() * 9999).toPrecision(4)}`;
 
   const addStudent = () => {
     if (!name || !email) return;
 
-    setStudents((prevStudents) => [
-      {
-        name,
-        email,
-        courses,
-        registration_number: randomRegistrationNumber(),
-      },
-      ...prevStudents,
-    ]);
+    postToApi(
+      "students",
+      { name, email, courses: JSON.stringify(courses) },
+      true
+    ).then((result) => {
+      if (result.errors) {
+        setError(true);
+        return;
+      }
 
-    setStudentPopupShown(false);
+      let newStudent = result.response;
+
+      setStudents((prevStudents) => [...prevStudents, newStudent]);
+      setStudentPopupShown(false);
+    });
   };
 
   const editStudent = () => {
     if (!name || !email) return;
 
-    setStudents((prevStudents) =>
-      [...prevStudents].map((student) =>
-        student.registration_number === registration_number
-          ? { name, email, courses, registration_number }
-          : student
-      )
-    );
+    postToApi(
+      `students/${id}`,
+      { name, email, courses: JSON.stringify(courses) },
+      true,
+      "PUT"
+    ).then((result) => {
+      if (result.errors) {
+        setError(true);
+        return;
+      }
 
-    setStudentPopupShown(false);
+      let newStudent = result.response;
+
+      setStudents((prevStudents) =>
+        [...prevStudents].map((students) =>
+          students.id === id
+            ? {
+                ...students,
+                name,
+                email,
+                courses: newStudent.courses,
+              }
+            : students
+        )
+      );
+      setStudentPopupShown(false);
+    });
   };
 
   return (
@@ -92,6 +119,17 @@ function Student({ role, student, setStudentPopupShown, setStudents }) {
               id="email"
             />
           </div>
+          <div className={style.form_group}>
+            <label className={style.courses}>Course(s):</label>
+            <ListSelect list={courses} setList={setCourses}>
+              {totalCourses.map((course) => (
+                <option value={course.id} key={course.id}>
+                  {course.title}
+                </option>
+              ))}
+            </ListSelect>
+          </div>
+          {error && <p className={style.error}>Email has been taken</p>}
           <Button onClick={role === "add" ? addStudent : editStudent}>
             {action}
           </Button>

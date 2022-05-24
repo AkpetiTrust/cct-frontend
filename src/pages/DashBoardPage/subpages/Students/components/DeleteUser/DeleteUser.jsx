@@ -1,12 +1,14 @@
 import React from "react";
 import { Popup, Button } from "../../../../../../components";
 import style from "./index.module.css";
+import { postToApi } from "../../../../../../utils/functions";
 
 function DeleteUser({ setPopupShown, id, setStudents }) {
   const handleDelete = () => {
     setStudents((prevStudents) =>
       [...prevStudents].filter((student) => student.id !== id)
     );
+    postToApi(`students/${id}`, null, true, "DELETE");
     setPopupShown(false);
   };
 

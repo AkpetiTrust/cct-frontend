@@ -39,7 +39,6 @@ function Faculty({
     if (!name || !email) return;
 
     postToApi(`staff/${id}`, { name, email }, true, "PUT").then((result) => {
-      console.log(result);
       if (result.errors) {
         setError(true);
         setLoading(false);

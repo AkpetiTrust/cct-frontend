@@ -26,7 +26,7 @@ function Course() {
       setPrerequisites(JSON.parse(response.course.prerequisites_json));
       setCct_advantages(JSON.parse(response.course.advantages_json));
       setFaculties(response.faculties.map((faculty) => faculty.name));
-      setStudents(response.students.map((student) => student.name));
+      setStudents(response.students);
       setBatches(response.batches);
     });
   }, []);
@@ -91,7 +91,7 @@ function Course() {
             ))}
           </Ul>
         </div>
-        <Link to={"/dashboard/batch"} className={style.button}>
+        <Link to={`/dashboard/new-batch/${id}`} className={style.button}>
           NEW BATCH{" "}
           <svg
             width="17"
@@ -113,7 +113,7 @@ function Course() {
           <h3>Students:</h3>
           <ol>
             {students.map((student) => (
-              <li key={student}>{student}</li>
+              <li key={student.email}>{student.name}</li>
             ))}
           </ol>
         </div>

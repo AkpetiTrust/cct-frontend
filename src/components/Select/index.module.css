@@ -1,0 +1,31 @@
+.select {
+  all: unset;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+  padding: 4px 30px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #000;
+  background-color: #f6e7e4;
+  border-radius: 15px;
+  text-transform: capitalize;
+}
+
+.select option {
+  background-color: #fff;
+}
+
+.container {
+  position: relative;
+}
+
+.container svg.close {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 4px;
+}
+/*# sourceMappingURL=index.module.css.map */

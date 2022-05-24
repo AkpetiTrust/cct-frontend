@@ -18,7 +18,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 function DashBoardPage() {
   const [owner, setOwner] = useState("student");
-  const { component, id } = useParams();
+  const { component } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,7 +50,7 @@ function DashBoardPage() {
       faculties: <Faculties />,
       courses: <Courses />,
       course: <Course />,
-      batch: <NewBatch />,
+      "new-batch": <NewBatch />,
     },
     faculty: {
       "exam-batches": <FacultyBatches />,

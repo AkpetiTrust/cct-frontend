@@ -1,0 +1,19 @@
+.list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+
+  button.button {
+    all: unset;
+    cursor: pointer;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+      all: unset;
+    }
+  }
+}

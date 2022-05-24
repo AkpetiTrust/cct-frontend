@@ -22,11 +22,15 @@ function Students() {
   const [deletePopupShown, setDeletePopupShown] = useState(false);
   const [idToDelete, setIdToDelete] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [totalCourses, setTotalCourses] = useState([]);
 
   useEffect(() => {
     fetchFromApi("students", true).then((result) => {
       setStudents(result.response);
       setLoading(false);
+    });
+    fetchFromApi("courses", true).then((result) => {
+      setTotalCourses(result.response);
     });
   }, []);
 
@@ -51,8 +55,12 @@ function Students() {
                   ({ name, courses, registration_number, email, id }) => (
                     <tr key={registration_number}>
                       <td>{name}</td>
-                      {/* <td>{truncateWords(courses.join(", "), 3)}</td> */}
-                      <td></td>
+                      <td>
+                        {truncateWords(
+                          courses.map((course) => course.title).join(", "),
+                          3
+                        )}
+                      </td>
                       <td>{registration_number}</td>
                       <td>
                         <Ellipsis
@@ -66,6 +74,7 @@ function Students() {
                                   courses,
                                   registration_number,
                                   email,
+                                  id,
                                 });
                                 setStudentPopupShown(true);
                               },
@@ -103,6 +112,7 @@ function Students() {
           setStudentPopupShown={setStudentPopupShown}
           student={studentToEdit}
           setStudents={setStudents}
+          totalCourses={totalCourses}
         />
       )}
       {deletePopupShown && (
