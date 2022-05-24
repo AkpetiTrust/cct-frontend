@@ -1,16 +1,47 @@
-import React, { useState } from "react";
-import { Button, Main } from "../../../../components";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { Button, Loading, Main } from "../../../../components";
+import { api, token } from "../../../../constants";
+import { fetchFromApi, getDateAndTime } from "../../../../utils/functions";
 import style from "./index.module.css";
 
 function ExamBatch() {
-  const [course, setCourse] = useState("PHP");
-  const [date, setDate] = useState("May 29th, 9am");
-  const [students, setStudents] = useState([
-    "James John",
-    "John Bird",
-    "K.A. Stroud",
-    "Idodo Umeh",
-  ]);
+  const [course, setCourse] = useState("");
+  const [date, setDate] = useState("");
+  const [students, setStudents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetchFromApi(`exam-batches/${id}`, true).then((result) => {
+      const batch = result.response;
+      setCourse(batch.course.title);
+      setDate(getDateAndTime(batch.time));
+      setStudents(batch.students.map((student) => student.name));
+      setLoading(false);
+    });
+  }, []);
+
+  const handleChange = (e) => {
+    let file = e.currentTarget.files[0];
+    const data = new FormData();
+    data.append("questions", file);
+    setLoading(true);
+    fetch(`${api}/add-questions/${id}`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token()}`,
+      },
+      body: data,
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setLoading(false);
+      });
+  };
+
+  if (loading) return <Loading height={"100vh"} />;
 
   return (
     <Main className={style.batch}>
@@ -1044,7 +1075,8 @@ function ExamBatch() {
           your questions into it, then upload that file.
         </p>
         <div className={style.btn_group}>
-          <Button hasIcon gap={"10px"}>
+          <input onChange={handleChange} type="file" name="file" id="file" />
+          <Button hasIcon htmlFor="file" gap={"10px"}>
             UPLOAD FILE
             <svg
               width="21"
@@ -1063,7 +1095,9 @@ function ExamBatch() {
               />
             </svg>
           </Button>
-          <Button>DOWNLOAD TEMPLATE</Button>
+          <Button href="/template.xlsx" download>
+            DOWNLOAD TEMPLATE
+          </Button>
         </div>
       </section>
       <aside>

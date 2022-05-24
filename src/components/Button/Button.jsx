@@ -9,6 +9,8 @@ function Button({
   backgroundColor,
   gap,
   to,
+  href,
+  htmlFor,
   ...props
 }) {
   const hasIconStyle = hasIcon
@@ -27,6 +29,27 @@ function Button({
       <Link to={to} style={buttonStyle} className={style.button} {...props}>
         {children}
       </Link>
+    );
+  }
+
+  if (href) {
+    return (
+      <a href={href} style={buttonStyle} className={style.button} {...props}>
+        {children}
+      </a>
+    );
+  }
+
+  if (htmlFor) {
+    return (
+      <label
+        htmlFor={htmlFor}
+        style={buttonStyle}
+        className={style.button}
+        {...props}
+      >
+        {children}
+      </label>
     );
   }
 

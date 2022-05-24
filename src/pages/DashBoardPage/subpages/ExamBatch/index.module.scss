@@ -29,16 +29,21 @@
       align-items: center;
       margin-top: 30px;
 
-      button {
+      input {
+        display: none;
+      }
+
+      a,
+      label {
         font-size: 12px;
         letter-spacing: 0.07em;
       }
 
-      button:first-child {
+      label:nth-child(2) {
         margin-right: 30px;
       }
 
-      button:last-child {
+      a:last-child {
         background-color: transparent;
         color: #1f2d47;
         border: 1px solid #1f2d47;

@@ -40,16 +40,21 @@
   margin-top: 30px;
 }
 
-.batch .main .btn_group button {
+.batch .main .btn_group input {
+  display: none;
+}
+
+.batch .main .btn_group a,
+.batch .main .btn_group label {
   font-size: 12px;
   letter-spacing: 0.07em;
 }
 
-.batch .main .btn_group button:first-child {
+.batch .main .btn_group label:nth-child(2) {
   margin-right: 30px;
 }
 
-.batch .main .btn_group button:last-child {
+.batch .main .btn_group a:last-child {
   background-color: transparent;
   color: #1f2d47;
   border: 1px solid #1f2d47;
