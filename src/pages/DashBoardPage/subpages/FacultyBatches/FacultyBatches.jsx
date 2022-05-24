@@ -18,7 +18,7 @@ function FacultyBatches() {
         setBatches(
           result.response.map((batch) => ({
             ...batch,
-            pending: batch.questions_json !== "null",
+            pending: batch.questions_json === null,
           }))
         );
 

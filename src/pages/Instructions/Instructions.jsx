@@ -1,13 +1,33 @@
-import React, { useState } from "react";
-import { Button, Curve, Main } from "../../components";
+import React, { useState, useEffect } from "react";
+import { Button, Curve, Main, Loading } from "../../components";
 import style from "./index.module.css";
 import logo from "../../assets/logo.png";
+import { useNavigate, useParams } from "react-router-dom";
+import { fetchFromApi } from "../../utils/functions";
 
 function Instructions() {
-  const [course, setCourse] = useState("PHP");
+  const [course, setCourse] = useState("");
   const [duration, setDuration] = useState("30 minutes");
-  const [numberOfQuestions, setNumberOfQuestions] = useState(50);
+  const [numberOfQuestions, setNumberOfQuestions] = useState(0);
   const [questionsHaveEqualMarks, setQuestionsHaveEqualMarks] = useState(true);
+  const [loading, setLoading] = useState(true);
+
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchFromApi(`get-batch/${id}`, true).then(({ response }) => {
+      if (new Date(response.time).getTime() > Date.now()) {
+        return navigate(`/waiting-area/${id}`);
+      }
+
+      setCourse(response.course);
+      setNumberOfQuestions(response.questionNumber);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) return <Loading height={"100vh"} />;
 
   return (
     <Main className={style.instructions}>
@@ -35,7 +55,7 @@ function Instructions() {
             for you.
           </li>
         </ol>
-        <Button>START EXAM</Button>
+        <Button to={`/exam/${id}`}>START EXAM</Button>
       </div>
       <Curve />
     </Main>

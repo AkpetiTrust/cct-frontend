@@ -28,7 +28,8 @@
   max-width: 350px;
 }
 
-.cbt .inner .middle button {
+.cbt .inner .middle button,
+.cbt .inner .middle a {
   border-radius: 80px;
   max-width: 400px;
   display: block;

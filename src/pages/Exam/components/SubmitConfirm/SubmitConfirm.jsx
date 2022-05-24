@@ -2,7 +2,7 @@ import React from "react";
 import { Popup, Button } from "../../../../components";
 import style from "./index.module.css";
 
-function SubmitConfirm({ setSubmitConfirmShown }) {
+function SubmitConfirm({ setSubmitConfirmShown, onSubmit }) {
   return (
     <Popup setPopupShown={setSubmitConfirmShown}>
       <div className={style.inner}>
@@ -28,7 +28,7 @@ function SubmitConfirm({ setSubmitConfirmShown }) {
         <p>
           Are you really sure you want to submit the exam?You can't undo this.
         </p>
-        <Button>SUBMIT EXAM</Button>
+        <Button onClick={onSubmit}>SUBMIT EXAM</Button>
       </div>
     </Popup>
   );

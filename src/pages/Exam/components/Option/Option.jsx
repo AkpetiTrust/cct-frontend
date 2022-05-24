@@ -13,13 +13,15 @@ function Option({
   const optionId = questionId + "" + option.id;
 
   const handleChange = () => {
-    setQuestions((prevQuestions) =>
-      [...prevQuestions].map((question) =>
+    setQuestions((prevQuestions) => {
+      let newQuestions = [...prevQuestions].map((question) =>
         question.id !== questionId
           ? question
           : { ...question, answerId: option.id }
-      )
-    );
+      );
+      localStorage.setItem("questions", JSON.stringify(newQuestions));
+      return newQuestions;
+    });
   };
 
   return (

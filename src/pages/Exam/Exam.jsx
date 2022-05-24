@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Main } from "../../components";
+import { Main, Loading } from "../../components";
 import logo from "../../assets/logo.png";
 import style from "./index.module.css";
 import {
@@ -9,278 +9,22 @@ import {
   SubmitConfirm,
   Warning,
 } from "./components";
-import { getFullTime } from "../../utils/functions";
+import { fetchFromApi, getFullTime } from "../../utils/functions";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Exam() {
-  const [course, setCourse] = useState("PHP");
-  const [durationInMinutes, setDurationInMinutes] = useState(5.2);
-  const [startTime, setStartTime] = useState(new Date());
-  const [stopTime, setStopTime] = useState(() => {
-    let durationInMiliiseconds = durationInMinutes * 60 * 1000;
-    let stopTimestamp = startTime.getTime() + durationInMiliiseconds;
-    return new Date(stopTimestamp);
-  });
-  const [questions, setQuestions] = useState([
-    {
-      question:
-        "What PHP global contains the request data for this url: https://example.com/index.php?query=test",
-      options: [
-        {
-          option: "$_SERVER",
-          id: 1,
-        },
-        {
-          option: "$_POST",
-          id: 2,
-        },
-        {
-          option: "$_GET",
-          id: 3,
-        },
-        {
-          option: "$none",
-          id: 4,
-        },
-      ],
-      id: 1,
-      answerId: null,
-    },
-    {
-      question:
-        "Who represents the goat in Daniel's vision of a sheep and a goat",
-      options: [
-        {
-          option: "Rome",
-          id: 1,
-        },
-        {
-          option: "Greece",
-          id: 2,
-        },
-        {
-          option: "Babylon",
-          id: 3,
-        },
-        {
-          option: "Medo-Persia",
-          id: 4,
-        },
-      ],
-      id: 2,
-      answerId: null,
-    },
-    {
-      question:
-        "From what book of the Bible did Daniel discern that Israel's time in captivity is 70 years long.",
-      options: [
-        {
-          option: "Ezekiel",
-          id: 1,
-        },
-        {
-          option: "Nahum",
-          id: 2,
-        },
-        {
-          option: "Jeremiah",
-          id: 3,
-        },
-        {
-          option: "Isaiah",
-          id: 4,
-        },
-      ],
-      id: 3,
-      answerId: null,
-    },
-    {
-      question: "Which angel of Jehovah referred to Daniel as a precious man.",
-      options: [
-        {
-          option: "Michael",
-          id: 1,
-        },
-        {
-          option: "Gabriel",
-          id: 2,
-        },
-        {
-          option: "Elijah",
-          id: 3,
-        },
-        {
-          option: "Job",
-          id: 4,
-        },
-      ],
-      id: 4,
-      answerId: null,
-    },
-    {
-      question: "Whose prayer did Mary's prayer resemble?",
-      options: [
-        {
-          option: "Deborah",
-          id: 1,
-        },
-        {
-          option: "Hannah",
-          id: 2,
-        },
-        {
-          option: "Peninah",
-          id: 3,
-        },
-        {
-          option: "Esther",
-          id: 4,
-        },
-      ],
-      id: 5,
-      answerId: null,
-    },
-    {
-      question: "Whose prayer did Mary's prayer resemble?",
-      options: [
-        {
-          option: "Deborah",
-          id: 1,
-        },
-        {
-          option: "Hannah",
-          id: 2,
-        },
-        {
-          option: "Peninah",
-          id: 3,
-        },
-        {
-          option: "Esther",
-          id: 4,
-        },
-      ],
-      id: 6,
-      answerId: null,
-    },
-    {
-      question: "Whose prayer did Mary's prayer resemble?",
-      options: [
-        {
-          option: "Deborah",
-          id: 1,
-        },
-        {
-          option: "Hannah",
-          id: 2,
-        },
-        {
-          option: "Peninah",
-          id: 3,
-        },
-        {
-          option: "Esther",
-          id: 4,
-        },
-      ],
-      id: 7,
-      answerId: null,
-    },
-    {
-      question: "Whose prayer did Mary's prayer resemble?",
-      options: [
-        {
-          option: "Deborah",
-          id: 1,
-        },
-        {
-          option: "Hannah",
-          id: 2,
-        },
-        {
-          option: "Peninah",
-          id: 3,
-        },
-        {
-          option: "Esther",
-          id: 4,
-        },
-      ],
-      id: 8,
-      answerId: null,
-    },
-    {
-      question: "Whose prayer did Mary's prayer resemble?",
-      options: [
-        {
-          option: "Deborah",
-          id: 1,
-        },
-        {
-          option: "Hannah",
-          id: 2,
-        },
-        {
-          option: "Peninah",
-          id: 3,
-        },
-        {
-          option: "Esther",
-          id: 4,
-        },
-      ],
-      id: 9,
-      answerId: null,
-    },
-    {
-      question: "Whose prayer did Mary's prayer resemble?",
-      options: [
-        {
-          option: "Deborah",
-          id: 1,
-        },
-        {
-          option: "Hannah",
-          id: 2,
-        },
-        {
-          option: "Peninah",
-          id: 3,
-        },
-        {
-          option: "Esther",
-          id: 4,
-        },
-      ],
-      id: 10,
-      answerId: null,
-    },
-    {
-      question: "Whose prayer did Mary's prayer resemble?",
-      options: [
-        {
-          option: "Deborah",
-          id: 1,
-        },
-        {
-          option: "Hannah",
-          id: 2,
-        },
-        {
-          option: "Peninah",
-          id: 3,
-        },
-        {
-          option: "Esther",
-          id: 4,
-        },
-      ],
-      id: 11,
-      answerId: null,
-    },
-  ]);
+  const [course, setCourse] = useState("");
+  const [durationInMinutes, setDurationInMinutes] = useState(30);
+  const [startTime, setStartTime] = useState();
+  const [stopTime, setStopTime] = useState();
+  const [questions, setQuestions] = useState([]);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
   const [warningShown, setWarningShown] = useState(false);
   const [submitConfirmShown, setSubmitConfirmShown] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const questionProps = {
     questions,
@@ -289,6 +33,65 @@ function Exam() {
     setActiveQuestionIndex,
     setSubmitConfirmShown,
   };
+
+  useEffect(() => {
+    let localQuestions = localStorage.getItem("questions");
+
+    if (localQuestions) {
+      let startTime = new Date(JSON.parse(localStorage.getItem("startTime")));
+      setQuestions(JSON.parse(localQuestions));
+      setStartTime(startTime);
+      setStopTime(() => {
+        let durationInMiliiseconds = durationInMinutes * 60 * 1000;
+        let offset = 500;
+        let stopTimestamp =
+          startTime.getTime() + durationInMiliiseconds - offset;
+        return new Date(stopTimestamp);
+      });
+      setCourse(localStorage.getItem("course"));
+      return setLoading(false);
+    }
+
+    fetchFromApi(`get-exam/${id}`, true).then((result) => {
+      if (result.error) {
+        return navigate("/dashboard/cbt");
+      }
+      let questions = result.questions.sort(() => Math.random() - 0.5);
+      questions.forEach((question) =>
+        question.options.sort(() => Math.random() - 0.5)
+      );
+      questions = questions.map((question) => ({
+        ...question,
+        answerId: null,
+      }));
+      setQuestions(questions);
+      let startTime = new Date();
+      setStartTime(startTime);
+      setStopTime(() => {
+        let durationInMiliiseconds = durationInMinutes * 60 * 1000;
+        let offset = 500;
+        let stopTimestamp =
+          startTime.getTime() + durationInMiliiseconds - offset;
+        return new Date(stopTimestamp);
+      });
+      setCourse(result.course);
+      setLoading(false);
+
+      localStorage.setItem("questions", JSON.stringify(questions));
+      localStorage.setItem("startTime", JSON.stringify(startTime));
+      localStorage.setItem("course", result.course);
+    });
+  }, []);
+
+  const handleSubmit = () => {
+    let sortedQuestions = [...questions].sort((a, b) => a.id - b.id);
+    console.log(sortedQuestions, questions);
+    localStorage.removeItem("questions");
+    localStorage.removeItem("startTime");
+    localStorage.removeItem("course");
+  };
+
+  if (loading) return <Loading height={"100vh"} />;
 
   return (
     <Main className={style.exam}>
@@ -325,7 +128,10 @@ function Exam() {
 
       {warningShown && <Warning setWarningShown={setWarningShown} />}
       {submitConfirmShown && (
-        <SubmitConfirm setSubmitConfirmShown={setSubmitConfirmShown} />
+        <SubmitConfirm
+          onSubmit={handleSubmit}
+          setSubmitConfirmShown={setSubmitConfirmShown}
+        />
       )}
     </Main>
   );
