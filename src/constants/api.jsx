@@ -1,3 +1,3 @@
-const api = "http://localhost:8000/api";
+const api = "https://cct-backend.herokuapp.com/api";
 
 export default api;
