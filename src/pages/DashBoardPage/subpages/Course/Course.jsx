@@ -3,7 +3,7 @@ import { Loading, Main, SectionTitle, Ul } from "../../../../components";
 import { Link } from "react-router-dom";
 import style from "./index.module.css";
 import { useParams } from "react-router-dom";
-import { fetchFromApi } from "../../../../utils/functions";
+import { fetchFromApi, getDateAndTime } from "../../../../utils/functions";
 
 function Course() {
   const [title, setTitle] = useState("");
@@ -86,7 +86,7 @@ function Course() {
           <Ul>
             {batches.map(({ time, id }) => (
               <li key={id}>
-                <a href="#">{time}</a>
+                <a href="#">{getDateAndTime(time)}</a>
               </li>
             ))}
           </Ul>

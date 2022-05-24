@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CheckBox from "../CheckBox/CheckBox";
 import Step from "../Step/Step";
 import Button from "../Button/Button";
 import Table from "../Table/Table";
 import style from "./index.module.css";
+import Loading from "../Loading/Loading";
+import {
+  convertToTwoDigits,
+  fetchFromApi,
+  postToApi,
+} from "../../utils/functions";
+import { useNavigate, useParams } from "react-router-dom";
 
 function MultistepForm({ role }) {
   const [activeTab, setActiveTab] = useState(1);
@@ -12,78 +19,38 @@ function MultistepForm({ role }) {
     { text: "Pick time", tab: 2 },
     { text: "Assign faculty", tab: 3 },
   ]);
-  const [students, setStudents] = useState([
-    {
-      name: "Akpeti Trust",
-      courses: ["Web design", "PHP"],
-      registration_number: "CCTXFSYT2022",
-      email: "akpetitrust@gmail.com",
-      selected: false,
-    },
-    {
-      name: "Akpeti Trust",
-      courses: ["Web design", "PHP"],
-      registration_number: "CCTXFSYT2092",
-      email: "akpetitrust@gmail.com",
-      selected: false,
-    },
-    {
-      name: "Akpeti Trust",
-      courses: ["Web design", "PHP"],
-      registration_number: "CCTXFSYT2082",
-      email: "akpetitrust@gmail.com",
-      selected: false,
-    },
-    {
-      name: "Akpeti Trust",
-      courses: ["Web design", "PHP"],
-      registration_number: "CCTXFSYT2622",
-      email: "akpetitrust@gmail.com",
-      selected: false,
-    },
-    {
-      name: "James John",
-      courses: ["Web design", "PHP", "COMPTIA A+"],
-      registration_number: "CCTXFSYT3622",
-      email: "akpetitrust@gmail.com",
-      selected: false,
-    },
-  ]);
+  const [students, setStudents] = useState([]);
 
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(
+    `${new Date().getFullYear()}-${convertToTwoDigits(
+      new Date().getMonth() + 1
+    )}-${convertToTwoDigits(new Date().getDate())}T${convertToTwoDigits(
+      new Date().getHours()
+    )}:${convertToTwoDigits(new Date().getMinutes())}`
+  );
 
-  const [faculties, setFaculties] = useState([
-    {
-      name: "Akpeti Trust",
-      staff_id: "CCTXFSYT2022",
-      email: "akpetitrust@gmail.com",
-      inCharge: false,
-    },
-    {
-      name: "Akpeti Trust",
-      staff_id: "CCTXFSYT2092",
-      email: "akpetitrust@gmail.com",
-      inCharge: false,
-    },
-    {
-      name: "Akpeti Trust",
-      staff_id: "CCTXFSYT2082",
-      email: "akpetitrust@gmail.com",
-      inCharge: false,
-    },
-    {
-      name: "Akpeti Trust",
-      staff_id: "CCTXFSYT2622",
-      email: "akpetitrust@gmail.com",
-      inCharge: false,
-    },
-    {
-      name: "James John",
-      staff_id: "CCTXFSYT3622",
-      email: "akpetitrust@gmail.com",
-      inCharge: false,
-    },
-  ]);
+  const [faculties, setFaculties] = useState([]);
+
+  const [selectedFaculty, setSelectedFaculty] = useState(0);
+
+  const [loading, setLoading] = useState(true);
+
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchFromApi(`courses/${id}`, true).then((result) => {
+      setStudents(
+        result.response.students.map((student) => ({
+          ...student,
+          selected: false,
+        }))
+      );
+      setFaculties(result.response.faculties);
+      setSelectedFaculty(result.response.faculties[0]?.id);
+      setLoading(false);
+    });
+  }, []);
 
   const handleCheck = (e, registration_number) => {
     const selected = e.target.checked;
@@ -95,6 +62,31 @@ function MultistepForm({ role }) {
       )
     );
   };
+
+  const handleSubmit = () => {
+    let course_id = Number(id);
+    let faculty_id = selectedFaculty;
+    let time = date;
+    let studentsToUpload = students
+      .filter((student) => student.selected)
+      .map((student) => student.id);
+
+    setLoading(true);
+    postToApi(
+      "exam-batches",
+      {
+        course_id,
+        faculty_id,
+        time,
+        students: JSON.stringify(studentsToUpload),
+      },
+      true
+    ).then(() => {
+      navigate(`/dashboard/course/${id}`);
+    });
+  };
+
+  if (loading) return <Loading height={"50vh"} />;
 
   return (
     <div className={style.multistep}>
@@ -169,12 +161,21 @@ function MultistepForm({ role }) {
           </div>
           <div className={style.faculty}>
             <p>Assign a faculty to upload the exam questions</p>
-            <select>
-              {faculties.map(({ name, staff_id }) => (
-                <option key={staff_id}>{name}</option>
+            <select
+              value={selectedFaculty}
+              onChange={(e) => {
+                setSelectedFaculty(Number(e.currentTarget.value));
+              }}
+            >
+              {faculties.map(({ name, staff_id, id }) => (
+                <option value={id} key={staff_id}>
+                  {name}
+                </option>
               ))}
             </select>
-            <Button width={"300px"}>CREATE EXAM BATCH</Button>
+            <Button width={"300px"} onClick={handleSubmit}>
+              CREATE EXAM BATCH
+            </Button>
           </div>
         </div>
       </div>

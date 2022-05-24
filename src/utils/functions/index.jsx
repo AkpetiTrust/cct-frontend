@@ -4,6 +4,7 @@ import getFullTime from "./getFullTime";
 import convertToTwoDigits from "./convertToTwoDigits";
 import fetchFromApi from "./fetchFromApi";
 import postToApi from "./postToApi";
+import getDateAndTime from "./getDateAndTime";
 
 export {
   truncateWords,
@@ -12,4 +13,5 @@ export {
   convertToTwoDigits,
   fetchFromApi,
   postToApi,
+  getDateAndTime,
 };
