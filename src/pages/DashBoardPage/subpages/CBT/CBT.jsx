@@ -20,9 +20,9 @@ function CBT() {
       const batches = result.response;
       batches.forEach((batch) => {
         let batchDateObject = new Date(batch.time);
-        const millisecondsInDay = 24 * 60 * 60 * 100;
+        const millisecondsInDay = 24 * 60 * 60 * 1000;
         let timeDifference = batchDateObject.getTime() - Date.now();
-        if (timeDifference < millisecondsInDay && timeDifference > 0) {
+        if (timeDifference < millisecondsInDay) {
           setStudentHasExam(true);
           setCourse(batch.course);
           setTime(getFullTime(new Date(batch.time)));

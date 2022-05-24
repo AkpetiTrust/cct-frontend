@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useCountDown } from "../../../../utils/hooks";
 
-function Counter({ stopTime, setWarningShown }) {
+function Counter({ stopTime, setWarningShown, handleSubmit }) {
   const { hoursLeft, minutesLeft, secondsLeft } = useCountDown(stopTime);
   const [lessThanFiveMinutesLeft, setLessThanFiveMinutesLeft] = useState(false);
 
@@ -13,6 +13,10 @@ function Counter({ stopTime, setWarningShown }) {
     ) {
       setLessThanFiveMinutesLeft(true);
       setWarningShown(true);
+    }
+
+    if (hoursLeft === "00" && minutesLeft === "00" && secondsLeft === "00") {
+      handleSubmit();
     }
   });
 

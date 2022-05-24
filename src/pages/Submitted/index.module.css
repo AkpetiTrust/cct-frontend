@@ -1,0 +1,52 @@
+.submitted {
+  padding-top: 40px;
+  position: relative;
+}
+
+.submitted .inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.submitted .inner figure {
+  width: 65px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.submitted .inner figure img {
+  max-width: 100%;
+}
+
+.submitted .inner h1 {
+  text-align: center;
+  letter-spacing: 0.09em;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 18px;
+  line-height: 1em;
+  margin-bottom: 10px;
+}
+
+.submitted .inner .talk {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  color: rgba(0, 0, 0, 0.56);
+  margin-bottom: 10px;
+  max-width: 400px;
+}
+
+.submitted .inner svg {
+  display: block;
+  margin: 0 auto;
+  max-width: 270px;
+}
+
+.submitted .inner svg + a {
+  display: block;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+/*# sourceMappingURL=index.module.css.map */

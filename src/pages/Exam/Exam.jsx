@@ -9,7 +9,7 @@ import {
   SubmitConfirm,
   Warning,
 } from "./components";
-import { fetchFromApi, getFullTime } from "../../utils/functions";
+import { fetchFromApi, getFullTime, postToApi } from "../../utils/functions";
 import { useNavigate, useParams } from "react-router-dom";
 
 function Exam() {
@@ -85,7 +85,15 @@ function Exam() {
 
   const handleSubmit = () => {
     let sortedQuestions = [...questions].sort((a, b) => a.id - b.id);
-    console.log(sortedQuestions, questions);
+    let answers = sortedQuestions.map((question) => question.answerId);
+    setLoading(true);
+    postToApi(
+      `submit-questions/${id}`,
+      { answers: JSON.stringify(answers) },
+      true
+    ).then(() => {
+      navigate("/submitted");
+    });
     localStorage.removeItem("questions");
     localStorage.removeItem("startTime");
     localStorage.removeItem("course");
@@ -118,7 +126,11 @@ function Exam() {
           </div>
         </section>
         <section className={style.aside}>
-          <Counter setWarningShown={setWarningShown} stopTime={stopTime} />
+          <Counter
+            handleSubmit={handleSubmit}
+            setWarningShown={setWarningShown}
+            stopTime={stopTime}
+          />
           <QuestionIndicator
             questions={questions}
             setActiveQuestionIndex={setActiveQuestionIndex}
