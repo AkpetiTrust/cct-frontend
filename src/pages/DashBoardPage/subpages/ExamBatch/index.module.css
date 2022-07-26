@@ -7,7 +7,7 @@
 
 .batch .main {
   padding: 40px;
-  padding-top: 60px;
+  padding-top: 50px;
 }
 
 .batch .main .title {
@@ -58,6 +58,43 @@
   background-color: transparent;
   color: #1f2d47;
   border: 1px solid #1f2d47;
+}
+
+.batch .main .time {
+  margin-top: 50px;
+}
+
+.batch .main .time p {
+  color: rgba(0, 0, 0, 0.9);
+  margin-bottom: 18px;
+}
+
+.batch .main .time .input_group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  --radius: 5px;
+  max-width: 400px;
+}
+
+.batch .main .time .input_group input {
+  all: unset;
+  padding: 4px 10px;
+  background-color: #e8e8e8;
+  border-top-left-radius: var(--radius);
+  border-bottom-left-radius: var(--radius);
+  font-size: 15px;
+  width: 100%;
+}
+
+.batch .main .time .input_group button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 0 20px;
+  font-size: 12px;
 }
 
 .batch aside {

@@ -10,6 +10,7 @@ function ExamBatch() {
   const [date, setDate] = useState("");
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [duration, setDuration] = useState("");
   const { id } = useParams();
 
   useEffect(() => {
@@ -1098,6 +1099,21 @@ function ExamBatch() {
           <Button href="/template.xlsx" download>
             DOWNLOAD TEMPLATE
           </Button>
+        </div>
+        <div className={style.time}>
+          <p>Exam Duration (in minutes)</p>
+          <div className={style.input_group}>
+            <input
+              value={duration}
+              onChange={(e) => {
+                setDuration(e.currentTarget.value);
+              }}
+              type="number"
+              name="time"
+              id="time"
+            />
+            <Button backgroundColor={"#354D78"}>SAVE</Button>
+          </div>
         </div>
       </section>
       <aside>

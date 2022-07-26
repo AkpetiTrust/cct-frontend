@@ -4,7 +4,7 @@
 
   .main {
     padding: 40px;
-    padding-top: 60px;
+    padding-top: 50px;
 
     .title {
       letter-spacing: 0.08em;
@@ -47,6 +47,38 @@
         background-color: transparent;
         color: #1f2d47;
         border: 1px solid #1f2d47;
+      }
+    }
+
+    .time {
+      margin-top: 50px;
+      p {
+        color: rgba(0, 0, 0, 0.9);
+        margin-bottom: 18px;
+      }
+
+      .input_group {
+        display: flex;
+        --radius: 5px;
+        max-width: 400px;
+
+        input {
+          all: unset;
+          padding: 4px 10px;
+          background-color: #e8e8e8;
+          border-top-left-radius: var(--radius);
+          border-bottom-left-radius: var(--radius);
+          font-size: 15px;
+          width: 100%;
+        }
+
+        button {
+          width: fit-content;
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          padding: 0 20px;
+          font-size: 12px;
+        }
       }
     }
   }
